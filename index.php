@@ -1,3 +1,4 @@
+<?php include 'session.php';?>
 <?php include 'template/header.php';?>
     <section id="main-content">
         <section class="wrapper">

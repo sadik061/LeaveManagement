@@ -12,20 +12,26 @@
     <title>Professional Associate LTD.</title>
 </head>
 <body data-gr-c-s-loaded="true">
-<form class="form-signin" style="margin-left: 30%;margin-right: 30%;margin-top: 7%;">
+<form class="form-signin" style="margin-left: 30%;margin-right: 30%;margin-top: 7%;" action="core/login.php" method="post">
     <div class="text-center mb-4">
         <img class="mb-4" src="http://www.bdpalcon.com/wp-content/uploads/2018/10/PAL-1.png" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">Professional Associate LTD.</h1>
         <p>Please provide proper Username and Password</p>
     </div>
+    <?php if(isset($_GET["type"])){
+    if($_GET["type"]=="alert"){?>
+    <div class="alert alert-danger" role="alert">
+       <?php echo $_GET["message"]; ?>
+    </div>
+    <?php }} ?>
 
     <div class="form-label-group">
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+        <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required="" autofocus="">
         <label for="inputEmail">Email address</label>
     </div>
 
     <div class="form-label-group">
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required="">
         <label for="inputPassword">Password</label>
     </div>
 
@@ -35,7 +41,7 @@
         </label>
     </div>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-    <p class="mt-5 mb-3 text-muted text-center">© 2017-2019</p>
+
 </form>
 
 

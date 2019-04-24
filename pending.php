@@ -20,15 +20,17 @@
     <table class="table table-inbox table-hover">
     <tbody>
 <?php include 'core/database.php';
-$sql = "SELECT * FROM (application natural join belongs_to) natural join users where status='pending' and user_id=".$_SESSION["userid"];
+$sql = "SELECT * FROM (application natural join belongs_to) natural join users where status='pending'";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     // output data of each row
     while ($row = $result->fetch_assoc()) { ?>
+
         <tr class="unread" >
-        <td class="view-message  dont-show" style="width: 30%"><a href="view.php?id=<?php echo $row["application_id"] ?>">  <?php echo $row["subject"] ?></a></td>
+
+        <td class="view-message  dont-show" style="width: 30%"><a href="view.php?id=<?php echo $row["application_id"] ?>"> <?php echo $row["subject"] ?></a></td>
         <td class="view-message "><a href="view.php?id=<?php echo $row["application_id"] ?>"> <?php echo $row["message"] ?></a></td>
-        <td class="view-message  text-right"> <?php echo $row["subday"] ?></td>
+                <td class="view-message  text-right"> <?php echo $row["subday"] ?></td>
         </tr >
         <?php }} ?>
 

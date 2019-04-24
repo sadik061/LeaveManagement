@@ -19,8 +19,8 @@
 
 
                         <div class="mail-header row">
-                            <form action="core/compose.php" method="get">
-                                <div class="col-md-8">
+
+                                <div class="col-md-9">
                                     <h4>
                                         <?php
                                         $Year = date('Y');
@@ -31,15 +31,38 @@
                                         echo $mon[$Month] . " " . $Day . ", " . $Year; ?> </h4>
                                     <h4> Authority</h4>
                                     <h4> <?php
-                                        $sql2 = "SELECT * FROM designation where designation_id=" . $row["parent_id"];
-                                        $result2 = $conn->query($sql2);
-                                        $row2 = $result2->fetch_assoc();
-                                        echo $row2["designation_name"]; ?></h4>
+                                        echo $row["designation_name"]; ?></h4>
                                     <h4>Prfessional Associate LTD.</h4>
                                     <h4>Adabor, Dhaka-1207</h4><br>
                                     <h4>Subject: <?php echo $row["subject"]; ?></h4>
                                     <br><h4>Dear Sir,</h4><br>
                                 </div>
+                            <form class="form-horizontal style-form" action="core/Approved.php" method="get">
+                                <div class="col-md-2">
+                                    <div class="compose-btn pull-right">
+                                        <select class="form-control" name="status">
+
+                                            <option value="approved">Approve</option>
+                                            <option value="rejected">Reject</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group" style="display: none;">
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="application_id" value="<?php echo $row["application_id"] ?>">
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="compose-btn pull-right">
+                                        <button type="submit" class="btn btn-sm btn-theme"><i
+                                                    class="fa fa-reply"></i> Apply</button>
+
+
+
+                                    </div>
+                                </div>
+                            </form>
 
                         </div>
 
@@ -58,7 +81,7 @@
                                 echo $row2["designation_name"]; ?></h4>
 
                         </div>
-                        </form>
+
 
                 </div>
         </section>

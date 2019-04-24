@@ -54,6 +54,16 @@
                                         <input type="password" class="form-control" name="password" value="">
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 col-sm-2 control-label">Add Member as</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" name="parent_id">
+                                            <option value="user">User</option>
+                                            <option value="admin">Admin</option>
+
+                                        </select>
+                                    </div>
+                                </div>
                                 <button type="submit" class="btn btn-theme">Add</button>
 
                             </form>

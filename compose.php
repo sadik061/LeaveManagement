@@ -31,10 +31,7 @@
                                         echo $mon[$Month] . " " . $Day . ", " . $Year; ?> </h4>
                                     <h4> Authority</h4>
                                     <h4> <?php
-                                        $sql2 = "SELECT * FROM designation where designation_id=" . $row["parent_id"];
-                                        $result2 = $conn->query($sql2);
-                                        $row2 = $result2->fetch_assoc();
-                                        echo $row2["designation_name"]; ?></h4>
+                                        echo $row["designation_name"]; ?></h4>
                                     <h4>Prfessional Associate LTD.</h4>
                                     <h4>Adabor, Dhaka-1207</h4><br>
                                     <h4>Subject: <input type="text" name="subject" class="form-control"
@@ -43,8 +40,11 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="compose-btn pull-right">
+
                                         <button type="submit" class="btn btn-sm btn-theme"><i
                                                     class="fa fa-reply"></i> Apply</button>
+
+
 
                                     </div>
                                 </div>

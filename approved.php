@@ -1,4 +1,4 @@
-<?php include 'session.php'; ?>
+ <?php include 'session.php'; ?>
 <?php include 'template/header.php'; ?>
     <section id="main-content">
         <section class="wrapper">
@@ -16,11 +16,12 @@
                         </header>
                         <div class="panel-body minimal">
 
+
                             <div class="table-inbox-wrap ">
                                 <table class="table table-inbox table-hover">
                                     <tbody>
                                     <?php include 'core/database.php';
-                                    $sql = "SELECT * FROM (application natural join belongs_to) natural join users where status='approved' and user_id=".$_SESSION["userid"];
+                                    $sql = "SELECT * FROM (application natural join belongs_to) natural join users where status='approved'";
                                     $result = $conn->query($sql);
                                     if ($result->num_rows > 0) {
                                         // output data of each row

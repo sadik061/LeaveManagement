@@ -20,7 +20,7 @@
                                 <table class="table table-inbox table-hover">
                                     <tbody>
                                     <?php include 'core/database.php';
-                                    $sql = "SELECT * FROM (application natural join belongs_to) natural join users where status='rejected' and user_id=".$_SESSION["userid"];
+                                    $sql = "SELECT * FROM (application natural join belongs_to) natural join users where status='rejected'";
                                     $result = $conn->query($sql);
                                     if ($result->num_rows > 0) {
                                         // output data of each row

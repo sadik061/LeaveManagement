@@ -1,19 +1,23 @@
 <div class="col-sm-3" style="position: fixed;">
     <section class="panel">
         <div class="panel-body">
-            <a href="mail_compose.html" class="btn btn-compose">
+            <a href="compose.php" class="btn btn-compose">
                 <i class="fa fa-pencil"></i> New Application
             </a>
             <ul class="nav nav-pills nav-stacked mail-nav">
-                <li><a href="#"> <i class="fa fa-envelope-o"></i> Profile</a></li>
-                <li class="active"><a href="inbox.html"> <i class="fa fa-inbox"></i> pending application <span
+                <li><a href="index.php"> <i class="fa fa-envelope-o"></i> Profile</a></li>
+                <li class="active"><a href="pending.php"> <i class="fa fa-inbox"></i> pending application <span
                             class="label label-theme pull-right inbox-notification">3</span></a></li>
 
-                <li><a href="#"> <i class="fa fa-trash-o"></i> Rejected application</a></li>
-                <li><a href="#"> <i class="fa fa-file-text-o"></i> Approved application <span
+                <li><a href="rejected.php"> <i class="fa fa-trash-o"></i> Rejected application</a></li>
+                <li><a href="approved.php"> <i class="fa fa-file-text-o"></i> Approved application <span
                             class="label label-info pull-right inbox-notification">8</span></a></a>
                 </li>
                 <li><a href="request.php"> <i class="fa fa-envelope-o"></i> Requests</a></li>
+                <?php if($_SESSION["role"]=="admin"){ ?>
+                <li><a href="designation.php"> <i class="fa fa-envelope-o"></i> Add designation</a></li>
+                <li><a href="user.php"> <i class="fa fa-envelope-o"></i> Add colligue</a></li>
+                <?php } ?>
             </ul>
         </div>
     </section>

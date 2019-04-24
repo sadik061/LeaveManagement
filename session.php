@@ -4,7 +4,8 @@ session_start();
 if(isset($_COOKIE["remember"])) {
     if($_COOKIE["remember"]=="true"){
         $_SESSION["login"] = "true";
-
+        $_SESSION["userid"]= $_COOKIE["id"];
+        $_SESSION["role"] = $_COOKIE["role"];
     }
 }
 

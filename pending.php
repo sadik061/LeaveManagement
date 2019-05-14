@@ -36,6 +36,7 @@ if ($result->num_rows > 0) {
 
         </tbody >
         </table >
+        <?php echo isset($_GET["message"]) ?>
         </div >
         </div >
         </section >

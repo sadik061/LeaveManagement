@@ -3,8 +3,8 @@
 session_start();
 ?>
 <?php include 'database.php';
-$stmt = $conn->prepare("INSERT INTO designation (designation_name, parent_id) VALUES (?, ?)");
-$stmt->bind_param("ss",  $_GET['designation_name'], $_GET['parent_id']);
+$stmt = $conn->prepare("INSERT INTO designation (designation_name, available_leave) VALUES (?, ?)");
+$stmt->bind_param("ss",  $_GET['designation_name'], $_GET['available_leave']);
 $stmt->execute();
 $stmt->close();
 $conn->close();

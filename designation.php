@@ -22,7 +22,7 @@
                                         <input type="text" class="form-control" name="designation_name" value="">
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <!--<div class="form-group">
                                     <label class="col-sm-2 col-sm-2 control-label">Parent</label>
                                     <div class="col-sm-10">
                                         <select class="form-control" name="parent_id">
@@ -38,6 +38,13 @@
                                                 }
                                             } ?>
                                         </select>
+                                    </div>
+                                </div>--!>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 col-sm-2 control-label">Total Leave</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control" name="available_leave" value="">
                                     </div>
                                 </div>
 
@@ -60,7 +67,7 @@
                                 <thead>
                                 <tr>
                                     <th><i class="fa fa-bullhorn"></i> Designation</th>
-                                    <th><i class="fa fa-bookmark"></i> parent</th>
+                                    <th><i class="fa fa-bookmark"></i> Total Leave</th>
                                     <th><i class=" fa fa-edit"></i> remove</th>
                                     <th></th>
                                 </tr>
@@ -72,13 +79,9 @@
                                 if ($result->num_rows > 0) {
                                     // output data of each row
                                     while ($row = $result->fetch_assoc()) {
-                                        echo '<tr>
-                                    <td>' . $row["designation_name"] . '</td>';
-                                    $sql2 = "SELECT * FROM designation where designation_id=".$row["parent_id"];
-                                    $result2 = $conn->query($sql2);
-                                    $row2 = $result2->fetch_assoc();
-                                    echo '<td>' . $row2["designation_name"] . '</td>
-                                    <td><a href="core/removedesignation.php?id='.$row["designation_id"].'" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a></td>
+                                        echo '<tr><td>' . $row["designation_name"] . '</td>
+                                        <td>' . $row["available_leave"] . '</td>';
+                                    echo '<td><a href="core/removedesignation.php?id='.$row["designation_id"].'" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a></td>
                                 </tr>';
                                     }
                                 }

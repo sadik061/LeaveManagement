@@ -31,7 +31,7 @@
                                         echo $mon[$Month] . " " . $Day . ", " . $Year; ?> </h4>
                                     <h4> Authority</h4>
                                     <h4> <?php
-                                        echo $row["designation_name"]; ?></h4>
+                                        //echo $row["designation_name"]; ?></h4>
                                     <h4>Prfessional Associate LTD.</h4>
                                     <h4>Adabor, Dhaka-1207</h4><br>
                                     <h4>Subject: <input type="text" name="subject" class="form-control"

@@ -7,6 +7,7 @@
                 <?php include 'template/sidebar.php'; ?>
                 <?php include 'core/database.php';
                 $sql = "SELECT * FROM users inner join designation on users.designation_id=designation.designation_id where user_id=" . $_SESSION["userid"];
+
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
                     // output data of each row

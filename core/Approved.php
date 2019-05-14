@@ -13,5 +13,5 @@ mysqli_close($conn);
 //$stmt->execute();
 //$stmt->close();
 //$conn->close();
-header("Location: ../index.php");
+header("Location: ../pending.php");
 ?>

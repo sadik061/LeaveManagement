@@ -1,26 +1,28 @@
 <div class="col-sm-3" style="position: fixed;">
+
+
     <section class="panel">
         <div class="panel-body">
             <a href="compose.php" class="btn btn-compose">
                 <i class="fa fa-pencil"></i> New Application
             </a>
-            <ul class="nav nav-pills nav-stacked mail-nav">
+            <ul class="nav nav-pills nav-stacked mail-nav" id="nav">
                 <li><a href="index.php"> <i class="fa fa-envelope-o"></i> Profile</a></li>
-                <?php if($_SESSION["role"]=="admin"){ ?>
-                    <li class="active"><a href="pending.php"> <i class="fa fa-inbox"></i> pending application <span
+                <?php if ($_SESSION["role"] == "admin") { ?>
+                    <li><a href="pending.php"> <i class="fa fa-inbox"></i> pending application <span
                                     class="label label-theme pull-right inbox-notification">3</span></a></li>
                     <li><a href="rejected.php"> <i class="fa fa-trash-o"></i> Rejected application</a></li>
                     <li><a href="approved.php"> <i class="fa fa-file-text-o"></i> Approved application <span
                                     class="label label-info pull-right inbox-notification">8</span></a></a>
                     </li>
 
-                <li><a href="designation.php"> <i class="fa fa-envelope-o"></i> Add designation</a></li>
-                <li><a href="user.php"> <i class="fa fa-envelope-o"></i> Add colligue</a></li>
-                <?php }else{ ?>
-                <li class="active"><a href="pending.php"> <i class="fa fa-inbox"></i> pending application <span
-                                class="label label-theme pull-right inbox-notification">3</span></a></li>
-                <li><a href="user_approved.php"> <i class="fa fa-file-text-o"></i> Approved application <span
-                                class="label label-info pull-right inbox-notification">8</span></a></a>
+                    <li><a href="designation.php"> <i class="fa fa-envelope-o"></i> Add designation</a></li>
+                    <li><a href="user.php"> <i class="fa fa-envelope-o"></i> Add colligue</a></li>
+                <?php } else { ?>
+                    <li><a href="pending.php"> <i class="fa fa-inbox"></i> pending application <span
+                                    class="label label-theme pull-right inbox-notification">3</span></a></li>
+                    <li><a href="user_approved.php"> <i class="fa fa-file-text-o"></i> Approved application <span
+                                    class="label label-info pull-right inbox-notification">8</span></a></a></li>
                     <li><a href="rejected.php"> <i class="fa fa-trash-o"></i> Rejected application</a></li>
                 <?php } ?>
             </ul>
@@ -164,8 +166,9 @@
                         </tbody>
                     </table>
                     <div class="legend" id="zabuto_calendar_1m6q_legend"><span class="legend-text"><span
-                                class="badge badge-event">00</span> Special event</span><span
-                            class="legend-block"><ul class="legend"><li class="event"></li><span>Regular event</span></ul></span>
+                                    class="badge badge-event">00</span> Special event</span><span
+                                class="legend-block"><ul class="legend"><li
+                                        class="event"></li><span>Regular event</span></ul></span>
                     </div>
                 </div>
             </div>
@@ -173,4 +176,5 @@
 
         </div>
     </section>
+
 </div>

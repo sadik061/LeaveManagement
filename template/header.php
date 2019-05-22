@@ -58,7 +58,8 @@
     <header class="header black-bg">
 
         <!--logo start-->
-        <a href="index.html" class="logo"><b>Leave<span>Management</span></b></a>
+       <a href="index.php" class="logo" style="margin-top: 1px;"><img class="logo" src="http://www.bdpalcon.com/wp-content/uploads/2018/10/PAL-1.png" alt="" width="72" height=auto><b>Professional Associate LTD.</b><span></span>
+        </a>
         <!--logo end-->
         <div class="nav notify-row" id="top_menu">
             <!--  notification start -->

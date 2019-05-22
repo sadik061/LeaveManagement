@@ -19,20 +19,20 @@
                     <section class="panel">
                         <header class="panel-heading wht-bg">
                             <h4 class="gen-case">
-                                Welcome <?php echo $row["user_name"] ?>
+                                Update your profile
                             </h4>
                         </header>
                         <div class="panel-body ">
                             <form class="form-horizontal style-form" action="core/profileupdate.php"
                                   method="post" enctype="multipart/form-data">
-                            <div class="row content-panel">
-                                <div class="col-md-4 profile-text mt mb centered">
-                                    <div class="right-divider hidden-sm hidden-xs">
-                                        <img src="uploads/<?php echo $row["image"] ?>" width="90%">
-                                        <input type="file" name="fileToUpload" id="fileToUpload" style="margin: 6%">
+                                <div class="row content-panel">
+                                    <div class="col-md-4 profile-text mt mb centered">
+                                        <div class="right-divider hidden-sm hidden-xs">
+                                            <img src="uploads/<?php echo $row["image"] ?>" width="90%">
+                                            <input type="file" name="fileToUpload" id="fileToUpload" style="margin: 6%">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-8 profile-text mt mb centered">
+                                    <div class="col-md-8 profile-text mt mb centered">
 
 
                                         <div class="form-group">
@@ -70,19 +70,41 @@
                                                        value="<?php echo $row["password"] ?>">
                                             </div>
                                         </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 col-sm-2 control-label">Facebook</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="facebook"
+                                                       value="<?php echo $row["facebook"] ?>">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 col-sm-2 control-label">Linked In</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="linkedin"
+                                                       value="<?php echo $row["linkedin"] ?>">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 col-sm-2 control-label">Skype</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="skype"
+                                                       value="<?php echo $row["skype"] ?>">
+                                            </div>
+                                        </div>
+
                                         <button type="submit" style="float: left;" class="btn btn-theme">Update</button>
 
-                                    </form>
-                                </div>
-                            </div>
-
+                            </form>
                         </div>
-                    </section>
                 </div>
 
             </div>
         </section>
-        <!-- /wrapper -->
+        </div>
+
+        </div>
+    </section>
+    <!-- /wrapper -->
     </section>
 
 <?php include 'template/footer.php'; ?>

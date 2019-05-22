@@ -3482,3 +3482,6 @@ ul.chat-available-user li a:hover {
 #copyrights a {
   color: #fff;
 }
+.panel-body {
+    padding: 15px 15px 0px 15px;
+}

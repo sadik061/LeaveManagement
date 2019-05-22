@@ -7,7 +7,7 @@
                 <i class="fa fa-pencil"></i> New Application
             </a>
             <ul class="nav nav-pills nav-stacked mail-nav" id="nav">
-                <li><a href="index.php"> <i class="fa fa-envelope-o"></i> Profile</a></li>
+                <li><a href="profile.php"> <i class="fa fa-envelope-o"></i> Profile</a></li>
                 <?php if ($_SESSION["role"] == "admin") { ?>
                     <li><a href="pending.php"> <i class="fa fa-inbox"></i> pending application <span
                                     class="label label-theme pull-right inbox-notification">3</span></a></li>

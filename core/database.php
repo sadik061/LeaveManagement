@@ -1,8 +1,8 @@
 <?php
     $servername = "localhost";
 $username = "root";
-$password = "";
-$dbname = "leavemanagement";
+$password = "151151";
+$dbname = "LeaveManagement";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);

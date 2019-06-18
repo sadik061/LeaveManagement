@@ -29,4 +29,14 @@ CREATE TABLE belongs_to(
     PRIMARY KEY (user_id,application_id),
     FOREIGN KEY (user_id) REFERENCES users (user_id),
     FOREIGN KEY (application_id) REFERENCES application (application_id)
-)
+);
+
+CREATE TABLE notice_board (
+  notice_board_id int(11) NOT NULL AUTO_INCREMENT,
+  notice_board_details MEDIUMTEXT NOT NULL,
+  notice_board_notice_given_user int(11) NOT NULL,
+  notice_board_creation_time DATETIME DEFAULT CURRENT_TIMESTAMP,
+  notice_board_modification_time DATETIME ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (notice_board_id),
+  FOREIGN KEY (notice_board_notice_given_user) REFERENCES users(user_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

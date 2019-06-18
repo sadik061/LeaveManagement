@@ -23,64 +23,83 @@
                             </h4>
                         </header>
                         <div class="panel-body ">
-                            <form class="form-horizontal style-form" action="core/profileupdate.php"
-                                  method="post" enctype="multipart/form-data">
-                            <div class="row content-panel">
-                                <div class="col-md-4 profile-text mt mb centered">
-                                    <div class="right-divider hidden-sm hidden-xs">
-                                        <img src="uploads/<?php echo $row["image"] ?>" width="90%">
-                                        <input type="file" name="fileToUpload" id="fileToUpload" style="margin: 6%">
-                                    </div>
+                            <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+                            <link rel="stylesheet" type="text/css" href="css/notice-board.css" />
+
+                            <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+                            <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+                            <!------ Include the above in your HEAD tag ---------->
+
+                            <div class="container">
+                                <div class="row">
+                                    <?php if ($_SESSION["role"] == "admin") { ?>
+                                        <textarea id="notice" class="text" cols="86" rows ="10" name="notice" form="noticeform"></textarea>
+
+                                        <form class="form-horizontal style-form" action="core/addNotice.php" method="post" id="noticeform">
+
+
+                                            <button type="submit" class="btn btn-theme">Add Notice</button>
+
+                                        </form>
+
+                                    <?php }?>
                                 </div>
-                                <div class="col-md-8 profile-text mt mb centered">
-
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-sm-2 control-label">Name</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="user_name"
-                                                       value="<?php echo $row["user_name"] ?>">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-sm-2 control-label">Designation</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control"
-                                                       value="<?php echo $row["designation_name"] ?>" disabled>
-                                            </div>
-                                        </div>
-                                        <div class="form-group" style="display: none">
-                                            <label class="col-sm-2 col-sm-2 control-label">Designation</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="designation_id"
-                                                       value="<?php echo $row["designation_id"] ?>">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-sm-2 control-label">Email</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="email"
-                                                       value="<?php echo $row["email"] ?>">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-sm-2 control-label">Password</label>
-                                            <div class="col-sm-10">
-                                                <input type="password" class="form-control" name="password"
-                                                       value="<?php echo $row["password"] ?>">
-                                            </div>
-                                        </div>
-                                        <button type="submit" style="float: left;" class="btn btn-theme">Update</button>
-
-                                    </form>
+                                <div class="row">
+                                    <h2>Notice Board</h2>
                                 </div>
+                                <div class="qa-message-list" id="wallmessages" style="overflow: scroll; border: 1px solid #ccc;width: 80%; height: 300px;">
+                                    <?php include 'core/database.php';
+                                    $sql = "SELECT * FROM notice_board JOIN users where notice_board.notice_board_notice_given_user=users.user_id ORDER BY notice_board_modification_time DESC";
+
+                                    $result = $conn->query($sql);
+                                    if ($result->num_rows > 0) {
+                                        foreach($result as $data)
+                                        {
+                                            echo "<div class=\"message-item\" id=\"m16\">
+                                        <div class=\"message-inner\">
+                                            <div class=\"message-head clearfix\">
+                                                <div class=\"avatar pull-left\"><a href=\"./index.php?qa=user&qa_1=Oleg+Kolesnichenko\"><img src=\"https://ssl.gstatic.com/accounts/ui/avatar_2x.png\"></a></div>
+                                                <div class=\"user-detail\">
+                                                    <h5 class=\"handle\">".$data["user_name"]."</h5>
+                                                    <div class=\"post-meta\">
+                                                        <div class=\"asker-meta\">
+                                                            <span class=\"qa-message-what\"></span>
+                                                            <span class=\"qa-message-when\">
+												<span class=\"qa-message-when-data\">".$data["notice_board_modification_time"]."</span>
+											</span>
+                                                            <span class=\"qa-message-who\">
+												<span class=\"qa-message-who-pad\">by </span>
+												<span class=\"qa-message-who-data\"><a href=\"./index.php?qa=user&qa_".$data["user_id"]."=".$data["user_name"]."\">".$data["user_name"]."</a></span>
+											</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class=\"qa-message-content\">
+                                               ".$data["notice_board_details"]."
+                                            </div>
+                                        </div></div>";
+                                        }
+                                        // output data of each row
+                                        //$row = $result->fetch_assoc();
+
+                                    }
+                                    ?>
+
+
+
+
+                                </div>
+
                             </div>
-
                         </div>
+
                     </section>
                 </div>
 
             </div>
+
         </section>
         <!-- /wrapper -->
     </section>

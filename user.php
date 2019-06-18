@@ -88,6 +88,7 @@
                                     <th> Designation</th>
                                     <th> Email</th>
                                     <th> Remove</th>
+                                    <th> Update</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -105,6 +106,7 @@
                                         echo '<td>' . $row2["designation_name"] . '</td>
                                         <td>' . $row["email"] . '</td>
                                     <td><a href="core/removeuser.php?id=' . $row["user_id"] . '" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a></td>
+                                    <td><a href="updatecollegueprofile.php?userid=' . $row["user_id"] . '" class="btn btn-warning btn-xs"><i class="fa fa-refresh "></i></a></td>
                                 </tr>';
                                     }
                                 }

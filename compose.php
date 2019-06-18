@@ -16,8 +16,7 @@
 
                 <div class="col-sm-9" style="margin-left: 25%;">
                     <section class="panel">
-
-
+                        <div class="panel-body ">
                             <div class="mail-header row">
                                 <form action="core/compose.php" method="get">
                                 <div class="col-md-8">
@@ -27,7 +26,6 @@
                                         $Month = (int)date('m');
                                         $mon = array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
                                         $Day = date('d');
-
                                         echo $mon[$Month] . " " . $Day . ", " . $Year; ?> </h4>
                                     <h4> Authority</h4>
                                     <h4> <?php
@@ -40,12 +38,8 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="compose-btn pull-right">
-
                                         <button type="submit" class="btn btn-sm btn-theme"><i
                                                     class="fa fa-reply"></i> Apply</button>
-
-
-
                                     </div>
                                 </div>
                             </div>
@@ -70,11 +64,11 @@
                                     $result2 = $conn->query($sql2);
                                     $row2 = $result2->fetch_assoc();
                                     echo $row2["designation_name"]; ?></h4>
-
                             </div>
                         </form>
 
                         </div>
+
                     </section>
 
                 </div>

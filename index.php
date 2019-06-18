@@ -4,7 +4,7 @@
         <section class="wrapper">
             <!-- page start-->
             <div class="row mt">
-                <?php include 'template/sidebar.php'; ?>
+                <?php include 'template/sidebar.php';?>
                 <?php include 'core/database.php';
                 $sql = "SELECT * FROM users inner join designation on users.designation_id=designation.designation_id where user_id=" . $_SESSION["userid"];
 
@@ -14,7 +14,6 @@
                     $row = $result->fetch_assoc();
                 }
                 ?>
-
                 <div class="col-sm-9" style="margin-left: 25%;">
                     <section class="panel">
                         <header class="panel-heading wht-bg">
@@ -30,9 +29,7 @@
                             <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
                             <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
                             <!------ Include the above in your HEAD tag ---------->
-
-                            <div class="container">
-                                <div class="row">
+                            <div class="row content-panel">
                                     <?php if ($_SESSION["role"] == "admin") { ?>
                                         <textarea id="notice" class="text" cols="86" rows ="10" name="notice" form="noticeform"></textarea>
 
@@ -45,7 +42,7 @@
 
                                     <?php }?>
                                 </div>
-                                <div class="row">
+                            <div class="row content-panel">
                                     <h2>Notice Board</h2>
                                 </div>
                                 <div class="qa-message-list" id="wallmessages" style="overflow: scroll; border: 1px solid #ccc;width: 80%; height: 300px;">
@@ -92,7 +89,7 @@
 
                                 </div>
 
-                            </div>
+
                         </div>
 
                     </section>

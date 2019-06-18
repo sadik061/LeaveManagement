@@ -44,7 +44,50 @@
                                         <div class="form-group">
                                             <label class="col-sm-6 col-sm-6 control-label">PROFESSIONAL ASSOCIATE LTD.</label>
                                         </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-6 col-sm-6 control-label">Leave Count Left: <?php
+                                                $sql = "SELECT * FROM belongs_to join application JOIN users WHERE belongs_to.application_id=application.application_id AND belongs_to.user_id=users.user_id AND users.user_id=".$_SESSION["userid"];
+                                                $result = $conn->query($sql);
+                                                $leave_count = 0;
+                                                if ($result->num_rows > 0) {
+                                                    // output data of each row
+                                                    $this_year = date("Y");
+                                                    while ($rows = $result->fetch_assoc()) {
+                                                        if($rows["status"]=="approved")
+                                                        {
 
+                                                            //echo $rows['leave_Date'];
+                                                            $leave_year = DateTime::createFromFormat("Y-m-d", $rows['leave_Date']);
+                                                            $leave_year= $leave_year->format("Y");
+                                                           // echo $rows['days'];
+                                                            if($this_year == $leave_year)
+                                                            {
+                                                                $leave_count+=$rows['days'];
+                                                            }
+                                                        }
+
+                                                    }
+                                                }
+                                                //echo $leave_count;
+                                                // die();
+                                                $sql = "SELECT * FROM designation WHERE designation_id=".$row["designation_id"];
+
+                                                $result = $conn->query($sql);
+                                                $leave_left =0;
+                                                if ($result->num_rows > 0) {
+                                                    // output data of each row
+                                                    while ($rowss = $result->fetch_assoc()) {
+                                                        $leave_left = $rowss["available_leave"] - $leave_count;
+                                                    }
+                                                }
+
+                                                echo $leave_left;
+
+                                                $conn->close();
+
+                                                ?>
+                                            </label>
+                                        </div>
                                         <div class="form-group">
                                             <label class="col-sm-6 col-sm-6 control-label"><?php echo $row["email"] ?></label>
                                         </div>

@@ -69,6 +69,7 @@
                                     <th><i class="fa fa-bullhorn"></i> Designation</th>
                                     <th><i class="fa fa-bookmark"></i> Total Leave</th>
                                     <th><i class=" fa fa-edit"></i> remove</th>
+                                    <th><i class=" fa fa-edit"></i> update</th>
                                     <th></th>
                                 </tr>
                                 </thead>
@@ -82,6 +83,7 @@
                                         echo '<tr><td>' . $row["designation_name"] . '</td>
                                         <td>' . $row["available_leave"] . '</td>';
                                     echo '<td><a href="core/removedesignation.php?id='.$row["designation_id"].'" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a></td>
+                                        <td><a href="updatedesignationview.php?des_id=' . $row["designation_id"] . '" class="btn btn-warning btn-xs"><i class="fa fa-refresh "></i></a></td>
                                 </tr>';
                                     }
                                 }

@@ -87,19 +87,7 @@
 
 
                             </div>
-                            <div class="row content-panel">
-                                    <?php if ($_SESSION["role"] == "admin") { ?>
-                                        <textarea id="notice" class="text" cols="150" rows="5" name="notice" form="noticeform"></textarea>
 
-                                        <form class="form-horizontal style-form" action="core/addNotice.php" method="post" id="noticeform">
-
-
-                                            <button type="submit" class="btn btn-theme right-side">Add Notice</button>
-
-                                        </form>
-
-                                    <?php }?>
-                                </div>
 
                         </div>
 

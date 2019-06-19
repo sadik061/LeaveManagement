@@ -94,15 +94,15 @@ INSERT INTO `designation` (`designation_id`, `designation_name`, `available_leav
 
 CREATE TABLE `users` (
   `user_id` int(11) NOT NULL,
-  `user_name` varchar(30) DEFAULT NULL,
-  `email` varchar(30) DEFAULT NULL,
-  `password` varchar(30) DEFAULT NULL,
-  `designation_id` int(11) DEFAULT NULL,
+  `user_name` varchar(30) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `password` varchar(30) NOT NULL,
+  `designation_id` int(11) NOT NULL,
   `role` varchar(30) NOT NULL,
-  `image` varchar(400) NOT NULL,
-  `facebook` varchar(100) NOT NULL,
-  `linkedin` varchar(100) NOT NULL,
-  `skype` varchar(100) NOT NULL
+  `image` varchar(400) DEFAULT NULL,
+  `facebook` varchar(100) DEFAULT NULL,
+  `linkedin` varchar(100) DEFAULT NULL,
+  `skype` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --

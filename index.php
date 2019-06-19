@@ -45,7 +45,7 @@
                             <div class="row content-panel">
                                     <h2>Notice Board</h2>
                                 </div>
-                                <div class="qa-message-list" id="wallmessages" style="overflow: scroll; border: 1px solid #ccc;width: 80%; height: 300px;">
+                                <div class="qa-message-list row content-panel" id="wallmessages" style="overflow: scroll; border: 1px solid #ccc; height: 300px;">
                                     <?php include 'core/database.php';
                                     $sql = "SELECT * FROM notice_board JOIN users where notice_board.notice_board_notice_given_user=users.user_id ORDER BY notice_board_modification_time DESC";
 

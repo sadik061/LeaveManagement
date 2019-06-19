@@ -21,9 +21,17 @@ $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 
 if($previous+$_GET['days']<$row["available_leave"]) {
+
     $stmt = $conn->prepare("INSERT INTO application (subject, message, status,subday, days, leave_Date, seen) VALUES (?, ?, ?, ?, ?, ?, ?)");
     $stmt->bind_param("sssssss", $_GET['subject'], $_GET['message'], $status, $Year, $_GET['days'], $_GET['date'], $seen);
     $stmt->execute();
+/*    if ($stmt->execute()) {
+    echo "worked";
+    die();
+} else {
+    echo "didn't work";
+    die();
+}*/
     $last_id = $conn->insert_id;
     $stmt = $conn->prepare("INSERT INTO belongs_to (user_id, application_id) VALUES (?, ?)");
     $stmt->bind_param("ss", $_SESSION["userid"], $last_id);

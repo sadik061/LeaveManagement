@@ -32,14 +32,29 @@
                                     }
                                     $no_of_records_per_page = 10;
                                     $offset = ($pageno-1) * $no_of_records_per_page;
+                                    if ($_SESSION["role"] == "admin") {
+                                        $total_pages_sql = "SELECT COUNT(*) FROM (application natural join belongs_to) natural join users where status='approved'";
 
-                                    $total_pages_sql = "SELECT COUNT(*) FROM (application natural join belongs_to) natural join users where status='approved'";
+                                    }
+                                    else
+                                    {
+                                        $total_pages_sql = "SELECT COUNT(*) FROM (application natural join belongs_to) natural join users where status='approved' and  user_id=" . $_SESSION["userid"];
+
+                                    }
 
                                     $result = $conn->query($total_pages_sql);
                                     $total_rows = mysqli_fetch_array($result)[0];
                                     $total_pages = ceil($total_rows / $no_of_records_per_page);
 
-                                    $sql = "SELECT * FROM (application natural join belongs_to) natural join users where status='approved' LIMIT ".$offset.", ".$no_of_records_per_page;
+                                    if ($_SESSION["role"] == "admin") {
+                                        $sql = "SELECT * FROM (application natural join belongs_to) natural join users where status='approved' LIMIT ".$offset.", ".$no_of_records_per_page;
+
+                                    }
+                                    else
+                                    {
+                                        $sql = "SELECT * FROM (application natural join belongs_to) natural join users where status='approved' and  user_id=" . $_SESSION["userid"]." LIMIT ".$offset.", ".$no_of_records_per_page;
+
+                                    }
 
                                     $result = $conn->query($sql);
                                     if ($result->num_rows > 0) {

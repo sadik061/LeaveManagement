@@ -18,34 +18,17 @@
                     <section class="panel">
                         <header class="panel-heading wht-bg">
                             <h4 class="gen-case">
-                                Welcome <?php echo $row["user_name"] ?>
+                                Notice Board
                             </h4>
                         </header>
                         <div class="panel-body ">
-                            <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
-                            <link rel="stylesheet" type="text/css" href="css/notice-board.css" />
 
                             <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
                             <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
                             <!------ Include the above in your HEAD tag ---------->
                             <div class="row content-panel">
-                                    <?php if ($_SESSION["role"] == "admin") { ?>
-                                        <textarea id="notice" class="text" cols="86" rows ="10" name="notice" form="noticeform"></textarea>
-
-                                        <form class="form-horizontal style-form" action="core/addNotice.php" method="post" id="noticeform">
-
-
-                                            <button type="submit" class="btn btn-theme">Add Notice</button>
-
-                                        </form>
-
-                                    <?php }?>
-                                </div>
-                            <div class="row content-panel">
-                                    <h2>Notice Board</h2>
-                                </div>
-                                <div class="qa-message-list" id="wallmessages" style="overflow: scroll; border: 1px solid #ccc;width: 80%; height: 300px;">
+                                <div class="qa-message-list" id="wallmessages" style="overflow: auto;padding: 15px; border: 1px solid #ccc;width: 100%; height: 300px;">
                                     <?php include 'core/database.php';
                                     $sql = "SELECT * FROM notice_board JOIN users where notice_board.notice_board_notice_given_user=users.user_id ORDER BY notice_board_modification_time DESC";
 
@@ -56,11 +39,9 @@
                                             echo "<div class=\"message-item\" id=\"m16\">
                                         <div class=\"message-inner\">
                                             <div class=\"message-head clearfix\">
-                                                <div class=\"avatar pull-left\"><a href=\"./index.php?qa=user&qa_1=Oleg+Kolesnichenko\"><img src=\"https://ssl.gstatic.com/accounts/ui/avatar_2x.png\"></a></div>
                                                 <div class=\"user-detail\">
-                                                    <h5 class=\"handle\">".$data["user_name"]."</h5>
                                                     <div class=\"post-meta\">
-                                                        <div class=\"asker-meta\">
+                                                        <div class=\"asker-meta\" style='color: #4ECDC4'>
                                                             <span class=\"qa-message-what\"></span>
                                                             <span class=\"qa-message-when\">
 												<span class=\"qa-message-when-data\">".$data["notice_board_modification_time"]."</span>
@@ -85,10 +66,23 @@
                                     ?>
 
 
-
-
                                 </div>
 
+
+                            </div>
+                            <div class="row content-panel">
+                                    <?php if ($_SESSION["role"] == "admin") { ?>
+                                        <textarea id="notice" class="text" cols="150" rows="5" name="notice" form="noticeform"></textarea>
+
+                                        <form class="form-horizontal style-form" action="core/addNotice.php" method="post" id="noticeform">
+
+
+                                            <button type="submit" class="btn btn-theme right-side">Add Notice</button>
+
+                                        </form>
+
+                                    <?php }?>
+                                </div>
 
                         </div>
 

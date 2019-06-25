@@ -28,7 +28,24 @@
                             <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
                             <!------ Include the above in your HEAD tag ---------->
                             <div class="row content-panel">
-                                <div class="qa-message-list" id="wallmessages" style="overflow: auto;padding: 15px; border: 1px solid #ccc;width: 100%; height: 300px;">
+
+                                    <?php if ($_SESSION["role"] == "admin") { ?>
+                                        <textarea id="notice" class="text" cols="86" rows ="10" name="notice" form="noticeform"></textarea>
+
+                                        <form class="form-horizontal style-form" action="core/addNotice.php" method="post" id="noticeform">
+
+
+                                            <button type="submit" class="btn btn-theme">Add Notice</button>
+
+                                        </form>
+
+                                    <?php }?>
+                                </div>
+                            <div class="row content-panel">
+                                    <h2>Notice Board</h2>
+                                </div>
+                                <div class="qa-message-list row content-panel" id="wallmessages" style="overflow: scroll; border: 1px solid #ccc; height: 300px;">
+
                                     <?php include 'core/database.php';
                                     $sql = "SELECT * FROM notice_board JOIN users where notice_board.notice_board_notice_given_user=users.user_id ORDER BY notice_board_modification_time DESC";
 
@@ -70,19 +87,7 @@
 
 
                             </div>
-                            <div class="row content-panel">
-                                    <?php if ($_SESSION["role"] == "admin") { ?>
-                                        <textarea id="notice" class="text" cols="150" rows="5" name="notice" form="noticeform"></textarea>
 
-                                        <form class="form-horizontal style-form" action="core/addNotice.php" method="post" id="noticeform">
-
-
-                                            <button type="submit" class="btn btn-theme right-side">Add Notice</button>
-
-                                        </form>
-
-                                    <?php }?>
-                                </div>
 
                         </div>
 

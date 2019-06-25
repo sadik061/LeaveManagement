@@ -52,7 +52,7 @@
                             <span class="label label-theme pull-right inbox-notification"><?php if($row["sum"]>0){echo $row["sum"];} ?></span></a></li>
                         <?php }
                     } ?>
-                    <li><a href="user_approved.php"> <i class="fa fa-file-text-o"></i> Approved
+                    <li><a href="approved.php"> <i class="fa fa-file-text-o"></i> Approved
                     application <?php include 'core/database.php';
                     $sql = "SELECT count(seen) as sum FROM (application natural join belongs_to) natural join users where status='approved' and belongs_to.user_id=" . $_SESSION["userid"];
                     $result = $conn->query($sql);

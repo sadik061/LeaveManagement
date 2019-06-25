@@ -1,7 +1,7 @@
 <?php
     $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "151151";
 $dbname = "LeaveManagement";
 
 // Create connection

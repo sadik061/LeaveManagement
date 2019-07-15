@@ -15,13 +15,18 @@ CREATE TABLE users(
  	designation_id)
 );
 CREATE TABLE application (
-    application_id int AUTO_INCREMENT,
-    message varchar(1000) not null,
-    approved varchar(30),
-    rejected varchar(30),
-    status varchar(30),
-    time date,
-    PRIMARY KEY (application_id)
+    `application_id` int(11) AUTO_INCREMENT,
+    'user_id' int,
+  `subject` varchar(400) NOT NULL,
+  `message` varchar(1000) NOT NULL,
+  `status` varchar(30) DEFAULT NULL,
+  `subday` date NOT NULL,
+  `days` int(11) NOT NULL,
+  `leave_Date` date NOT NULL,
+  `seen` varchar(30) NOT NULL
+    PRIMARY KEY (application_id),
+     FOREIGN KEY (user_id) REFERENCES users (
+ 	user_id)
 );
 CREATE TABLE belongs_to(
     user_id int,

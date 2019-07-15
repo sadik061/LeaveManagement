@@ -6,7 +6,7 @@
             <div class="row mt">
                 <?php include 'template/sidebar.php'; ?>
                 <?php include 'core/database.php';
-                $sql = "SELECT * FROM ((users inner join designation on users.designation_id=designation.designation_id) inner join belongs_to on users.user_id=belongs_to.user_id) natural join application where application_id=" . $_GET["id"];
+                $sql = "SELECT * FROM (users inner join designation on users.designation_id=designation.designation_id) natural join application where application_id=" . $_GET["id"];
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
                     // output data of each row
@@ -37,35 +37,40 @@
                                     <h4>Subject: <?php echo $row["subject"]; ?></h4>
                                     <br><h4>Dear Sir,</h4><br>
                                 </div>
-<?php if ($_SESSION["role"] == "admin") { ?>
-                                <form class="form-horizontal style-form" action="core/Approved.php" method="get">
-                                    <div class="col-md-2">
-                                        <div class="compose-btn pull-right">
-                                            <select class="form-control" name="status">
+                                <?php if ($_SESSION["role"] == "super_admin" || $_SESSION["role"] == "department_head") { ?>
+                                    <form class="form-horizontal style-form" action="core/Approved.php" method="get">
+                                        <div class="col-md-2">
+                                            <div class="compose-btn pull-right">
+                                                <select class="form-control" name="status">
+                                                    <?php if ($_SESSION["role"] == "department_head") { ?>
+                                                        <option value="pending">Approve</option>
+                                                    <?php } else { ?>
+                                                        <option value="approved">Approve</option>
+                                                    <?php } ?>
+                                                    <option value="rejected">Reject</option>
 
-                                                <option value="approved">Approve</option>
-                                                <option value="rejected">Reject</option>
 
-                                            </select>
+                                                </select>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group" style="display: none;">
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control" name="application_id"
-                                                   value="<?php echo $row["application_id"] ?>">
+                                        <div class="form-group" style="display: none;">
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="application_id"
+                                                       value="<?php echo $row["application_id"] ?>">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-1">
-                                        <div class="compose-btn pull-right">
-                                            <button type="submit" class="btn btn-sm btn-theme"><i
-                                                        class="fa fa-reply"></i> Apply
-                                            </button>
+                                        <div class="col-md-1">
+                                            <div class="compose-btn pull-right">
+                                                <button type="submit" class="btn btn-sm btn-theme"><i
+                                                            class="fa fa-reply"></i> Apply
+                                                </button>
 
 
+                                            </div>
                                         </div>
-                                    </div>
-                                </form>
-    <?php } ?>
+                                    </form>
+                                <?php } ?>
+
                             </div>
 
                             <div>

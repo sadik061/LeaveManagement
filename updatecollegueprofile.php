@@ -92,6 +92,19 @@
                                                        value="<?php echo $row["skype"] ?>">
                                             </div>
                                         </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 col-sm-2 control-label">Role</label>
+                                            <div class="col-sm-10">
+                                                <select class="form-control" name="role">
+                                                    <option value="<?php echo $row["role"] ?>"><?php echo $row["role"] ?></option>
+                                                    <option value="user">User</option>
+                                                    <option value="department_head">Department Head</option>
+                                                    <option value="admin">Admin</option>
+                                                    <option value="super_admin">Super Admin</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
 
                                         <button type="submit" style="float: left;" class="btn btn-theme">Update</button>
 

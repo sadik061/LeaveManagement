@@ -1,5 +1,5 @@
 <?php include 'session.php'; ?>
-<?php if($_SESSION["role"]=="admin"){ ?>
+<?php if($_SESSION["role"]=="admin" || $_SESSION["role"]=="super_admin"){ ?>
 <?php include 'template/header.php'; ?>
     <section id="main-content">
         <section class="wrapper">
@@ -59,7 +59,9 @@
                                     <div class="col-sm-10">
                                         <select class="form-control" name="role">
                                             <option value="user">User</option>
+                                            <option value="department_head">Department Head</option>
                                             <option value="admin">Admin</option>
+                                            <option value="super_admin">Super Admin</option>
 
                                         </select>
                                     </div>
@@ -87,6 +89,7 @@
                                     <th> Name</th>
                                     <th> Designation</th>
                                     <th> Email</th>
+                                    <th> Role</th>
                                     <th> Remove</th>
                                     <th> Update</th>
                                 </tr>
@@ -105,6 +108,7 @@
                                         $row2 = $result2->fetch_assoc();
                                         echo '<td>' . $row2["designation_name"] . '</td>
                                         <td>' . $row["email"] . '</td>
+                                        <td>' . $row["role"] . '</td>
                                     <td><a href="core/removeuser.php?id=' . $row["user_id"] . '" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a></td>
                                     <td><a href="updatecollegueprofile.php?userid=' . $row["user_id"] . '" class="btn btn-warning btn-xs"><i class="fa fa-refresh "></i></a></td>
                                 </tr>';

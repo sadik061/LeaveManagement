@@ -3,9 +3,9 @@
 session_start();
 ?>
 <?php
-$target_dir = "../uploads/";
-$target_file = $target_dir . date('dmYHis') . round(microtime(true)) . basename($_FILES["fileToUpload"]["name"]);
-$name = date('dmYHis') . round(microtime(true)) . basename($_FILES["fileToUpload"]["name"]);
+$target_dir = "../uploads/files/";
+$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+$name = basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 if (isset($_POST["submit"])) {
@@ -24,12 +24,12 @@ if (file_exists($target_file)) {
     $uploadOk = 0;
 }
 // Check file size
-if ($_FILES["fileToUpload"]["size"] > 500000) {
+if ($_FILES["fileToUpload"]["size"] > 5000000) {
     echo "Sorry, your file is too large.";
     $uploadOk = 0;
 }
 // Allow certain file formats
-if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "pdf" && $imageFileType != "doc"
     && $imageFileType != "gif") {
     echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
     $uploadOk = 0;
@@ -49,8 +49,8 @@ if ($uploadOk == 0) {
 
 
 <?php include 'database.php';
-$sql = "UPDATE users SET user_name='" . $_POST["user_name"] . "', email='" . $_POST["email"] . "', password='" . $_POST["password"] . "', designation_id=" . $_POST["designation_id"] . ", image='" . date('dmYHis') . round(microtime(true)) .basename($_FILES["fileToUpload"]["name"]). "', facebook='" . $_POST["facebook"] . "', linkedin='" . $_POST["linkedin"] . "', skype='" . $_POST["skype"] . "', role='" . $_POST["role"] . "' WHERE user_id=" . $_POST['userid'];
+$sql = "UPDATE users SET user_name='" . $_POST["user_name"] . "', email='" . $_POST["email"] . "', password='" . $_POST["password"] . "', designation_id=" . $_POST["designation_id"] . ", image='" . date('dmYHis') . round(microtime(true)) .basename($_FILES["fileToUpload"]["name"]). "', facebook='" . $_POST["facebook"] . "', linkedin='" . $_POST["linkedin"] . "', skype='" . $_POST["skype"] . "' WHERE user_id=" . $_SESSION['userid'];
 mysqli_query($conn, $sql);
 mysqli_close($conn);
-header("Location: ../user.php");
+header("Location: ../profile.php");
 ?>

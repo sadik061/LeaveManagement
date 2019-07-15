@@ -1,5 +1,5 @@
 <?php include 'session.php'; ?>
-<?php if($_SESSION["role"]=="admin"){ ?>
+<?php if($_SESSION["role"]=="admin" || $_SESSION["role"]=="super_admin"){ ?>
 <?php include 'template/header.php'; ?>
     <section id="main-content">
         <section class="wrapper">

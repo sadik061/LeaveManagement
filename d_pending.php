@@ -12,7 +12,7 @@
                     <section class="panel">
                         <header class="panel-heading wht-bg">
                             <h4 class="gen-case">
-                                Rejected applications
+                                Pending applications
 
                             </h4>
                         </header>
@@ -23,6 +23,7 @@
                                     <tbody>
                                     <?php include 'core/database.php';
 
+                                    include 'core/database.php';
                                     if (isset($_GET['pageno'])) {
                                         $pageno = $_GET['pageno'];
                                     } else {
@@ -30,22 +31,26 @@
                                     }
                                     $no_of_records_per_page = 10;
                                     $offset = ($pageno - 1) * $no_of_records_per_page;
+                                    $total_pages_sql = "SELECT COUNT(*) FROM application where status='pending' and department=0";
 
-                                        $total_pages_sql = "SELECT COUNT(*) FROM application  natural join users where status='rejected' and  user_id=" . $_SESSION["userid"];
 
 
                                     $result = $conn->query($total_pages_sql);
                                     $total_rows = mysqli_fetch_array($result)[0];
                                     $total_pages = ceil($total_rows / $no_of_records_per_page);
 
-                                        $sql = "SELECT * FROM application natural join users where status='rejected' and  user_id=" . $_SESSION["userid"]." LIMIT ".$offset.", ".$no_of_records_per_page;
+                                    $sql = "SELECT * FROM application natural join users where status='pending' and department=0 LIMIT ".$offset.", ".$no_of_records_per_page;
 
-                                     $result = $conn->query($sql);
+
+
+                                    $result = $conn->query($sql);
                                     if ($result->num_rows > 0) {
                                         // output data of each row
                                         while ($row = $result->fetch_assoc()) { ?>
+
                                             <tr class="unread" >
-                                                <td class="view-message  dont-show" style="width: 30%"><a href="view.php?id=<?php echo $row["application_id"] ?>">  <?php echo $row["subject"] ?></a></td>
+
+                                                <td class="view-message  dont-show" style="width: 30%"><a href="view.php?id=<?php echo $row["application_id"] ?>"> <?php echo $row["subject"] ?></a></td>
                                                 <td class="view-message "><a href="view.php?id=<?php echo $row["application_id"] ?>"> <?php echo $row["message"] ?></a></td>
                                                 <td class="view-message  text-right"> <?php echo $row["subday"] ?></td>
                                             </tr >
@@ -63,6 +68,7 @@
                                     </li>
                                     <li><a href="?pageno=<?php echo $total_pages; ?>">Last</a></li>
                                 </ul>
+                                <?php echo isset($_GET["message"]) ?>
                             </div >
                         </div >
                     </section >

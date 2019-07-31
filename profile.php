@@ -1,25 +1,20 @@
 <?php include 'session.php'; ?>
+<?php include 'core/userProfile.php'; 
+    $user = new User($_SESSION["userid"]);
+?>
 <?php include 'template/header.php'; ?>
     <section id="main-content">
         <section class="wrapper">
             <!-- page start-->
             <div class="row mt">
                 <?php include 'template/sidebar.php'; ?>
-                <?php include 'core/database.php';
-                $sql = "SELECT * FROM users inner join designation on users.designation_id=designation.designation_id where user_id=" . $_SESSION["userid"];
-
-                $result = $conn->query($sql);
-                if ($result->num_rows > 0) {
-                    // output data of each row
-                    $row = $result->fetch_assoc();
-                }
-                ?>
+                <?php include 'core/database.php'; ?>
 
                 <div class="col-sm-9" style="margin-left: 25%;">
                     <section class="panel">
                         <header class="panel-heading wht-bg">
                             <h4 class="gen-case">
-                                Welcome <?php echo $row["user_name"] ?>
+                                Welcome <?php echo $user->user_name; ?>
                             </h4>
                         </header>
                         <div class="panel-body ">
@@ -28,81 +23,62 @@
                                 <div class="row content-panel">
                                     <div class="col-md-4 profile-text mt mb centered">
                                         <div class="right-divider hidden-sm hidden-xs">
-                                            <img src="uploads/<?php echo $row["image"] ?>" width="90%">
+                                            <img src="uploads/<?php echo $user->image; ?>" width="90%">
                                         </div>
                                     </div>
                                     <div class="col-md-8 profile-text mt mb centered">
 
 
                                         <div class="form-group">
-                                            <label class="col-sm-2 col-sm-2 control-label">Name:</label>
-                                            <label class="col-sm-6 col-sm-6 control-label"><?php echo $row["user_name"] ?></label>
+                                            <label class="col-sm-3 col-sm-3 control-label">Name:</label>
+                                            <label class="col-sm-3 col-sm-3 control-label"><?php echo $user->user_name; ?></label>
 
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-2 col-sm-2 control-label">Designation:</label>
-                                            <label class="col-sm-6 col-sm-6 control-label"><?php echo $row["designation_name"] ?></label>
+                                            <label class="col-sm-3 col-sm-3 control-label">Designation:</label>
+                                            <label class="col-sm-3 col-sm-3 control-label"><?php echo $user->getDesignation(); ?></label>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-2 col-sm-2 control-label">Company:</label>
-                                            <label class="col-sm-6 col-sm-6 control-label">PROFESSIONAL ASSOCIATE
+                                            <label class="col-sm-3 col-sm-3 control-label">Company:</label>
+                                            <label class="col-sm-3 col-sm-3 control-label">PROFESSIONAL ASSOCIATE
                                                 LTD.</label>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-2 col-sm-2 control-label">Leave Left:</label>
-                                            <label class="col-sm-6 col-sm-6 control-label"><?php
-                                                $sql = "SELECT * FROM application JOIN users WHERE application.user_id=users.user_id AND users.user_id=" . $_SESSION["userid"];
-                                                $result = $conn->query($sql);
-                                                $leave_count = 0;
-                                                if ($result->num_rows > 0) {
-                                                    // output data of each row
-                                                    $this_year = date("Y");
-                                                    while ($rows = $result->fetch_assoc()) {
-                                                        if ($rows["status"] == "approved") {
-
-                                                            //echo $rows['leave_Date'];
-                                                            $leave_year = DateTime::createFromFormat("Y-m-d", $rows['leave_Date']);
-                                                            $leave_year = $leave_year->format("Y");
-                                                            // echo $rows['days'];
-                                                            if ($this_year == $leave_year) {
-                                                                $leave_count += $rows['days'];
-                                                            }
-                                                        }
-
-                                                    }
-                                                }
-                                                //echo $leave_count;
-                                                // die();
-                                                $sql = "SELECT * FROM designation WHERE designation_id=" . $row["designation_id"];
-
-                                                $result = $conn->query($sql);
-                                                $leave_left = 0;
-                                                if ($result->num_rows > 0) {
-                                                    // output data of each row
-                                                    while ($rowss = $result->fetch_assoc()) {
-                                                        $leave_left = $rowss["available_leave"] - $leave_count;
-                                                    }
-                                                }
-
-                                                echo $leave_left;
-
-
-
-                                                ?>
-                                            </label>
+                                            <label class="col-sm-3 col-sm-3 control-label">Casual Leave Left:</label>
+                                            <label class="col-sm-3 col-sm-3 control-label"><?php echo $user->getLeave('casual_leave'); ?> </label>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-2 col-sm-2 control-label">Email:</label>
-                                            <label class="col-sm-6 col-sm-6 control-label"><?php echo $row["email"] ?></label>
+                                            <label class="col-sm-3 col-sm-3 control-label">Earn Leave Left:</label>
+                                            <label class="col-sm-3 col-sm-3 control-label"><?php echo $user->getLeave('earn_leave'); ?> </label>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-2 col-sm-2 control-label">Social links:</label>
-                                            <label class="col-sm-6 col-sm-6 control-label">
-                                                <a title="Facebook" href="<?php echo $row["facebook"] ?>"
+                                            <label class="col-sm-3 col-sm-3 control-label">Medical Leave Left:</label>
+                                            <label class="col-sm-3 col-sm-3 control-label"><?php echo $user->getLeave('medical_leave'); ?> </label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 col-sm-3 control-label">Maternity Leave Taken:</label>
+                                            <label class="col-sm-3 col-sm-3 control-label"><?php echo $user->getLeave('maternity_leave'); ?> </label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 col-sm-3 control-label">Urgent Leave Taken:</label>
+                                            <label class="col-sm-3 col-sm-3 control-label"><?php echo $user->getLeave('urgent_leave'); ?> </label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 col-sm-3 control-label">Other Leave Left:</label>
+                                            <label class="col-sm-3 col-sm-3 control-label"><?php echo $user->getLeave('other_leave'); ?> </label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 col-sm-3 control-label">Email:</label>
+                                            <label class="col-sm-3 col-sm-3 control-label"><?php echo $user->email; ?></label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 col-sm-3 control-label">Social links:</label>
+                                            <label class="col-sm-3 col-sm-3 control-label">
+                                                <a title="Facebook" href="<?php echo $user->facebook ?>"
                                                    target="_blank"><i class="fa fa-facebook-square"></i></a>
-                                                <a title="linked in" href="<?php echo $row["linkedin"] ?>"
+                                                <a title="linked in" href="<?php echo $user->linkedin ?>"
                                                    target="_blank"><i class="fa fa-linkedin-square"></i></a>
-                                                <a title="skype" href="<?php echo $row["skype"] ?>" target="_blank"><i
+                                                <a title="skype" href="<?php echo $user->skype ?>" target="_blank"><i
                                                             class="fa fa-skype"></i></a>
                                             </label>
                                         </div>
@@ -155,19 +131,18 @@
                     </thead>
                     <tbody>
                     <?php
-                    $sql = "SELECT * FROM files";
-                    $result = $conn->query($sql);
-                    if ($result->num_rows > 0) {
-                        // output data of each row
-                        while ($row = $result->fetch_assoc()) {
-                            echo '<tr>
-                                    <td> <a href="uploads/documents/'. $row["url"] . '" target="_blank" >'. $row["namee"] . '</td>';
-                            echo '<td><a href="core/removeuser.php?id=' . $row["user_id"] . '" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a></td>
-                                  <td><a href="updatecollegueprofile.php?userid=' . $row["user_id"] . '" class="btn btn-warning btn-xs"><i class="fa fa-refresh "></i></a></td>
-                                </tr>';
-                        }
+                    
+                    $files = $user->getFiles();
+                    
+                    foreach($files as $file){
+                        echo '<tr>
+                                    <td> <a href="uploads/documents/'. $file["url"] . '" target="_blank" >'. $file["namee"] . '</td>';
+                        echo '<td><a href="core/removeuser.php?id=' . $user->user_name . '" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a></td>
+                                <td><a href="updatecollegueprofile.php?userid=' . $user->user_name . '" class="btn btn-warning btn-xs"><i class="fa fa-refresh "></i></a></td>
+                            </tr>';
                     }
-                    $conn->close(); ?>
+
+                    ?>
 
 
                     </tbody>

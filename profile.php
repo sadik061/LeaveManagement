@@ -86,7 +86,7 @@
 
                                                 echo $leave_left;
 
-                                                $conn->close();
+
 
                                                 ?>
                                             </label>
@@ -124,14 +124,23 @@
                     Documents
                 </h4>
             </header>
-            <form class="form-horizontal style-form" action="core/addfile.php"
-                  method="post" enctype="multipart/form-data">
+            <form class="form-horizontal style-form" action="core/addfile.php" method="post" enctype="multipart/form-data">
                 <div class="col-md-6 profile-text mt mb centered">
                     <div class="right-divider hidden-sm hidden-xs">
-                        <input type="file" name="fileToUpload" id="fileToUpload" style="margin: 6%">
+                        <input type="text" class="form-control" name="name" placeholder="File name">
                     </div>
                 </div>
-                <button type="submit" style="float: left;" class="btn btn-theme">Add</button>
+                <div class="col-md-4 profile-text mt mb centered">
+                    <div class="right-divider hidden-sm hidden-xs">
+                        <input type="file" name="fileToUpload2" id="fileToUpload2">
+                    </div>
+                </div>
+                <div class="col-md-2 profile-text mt mb centered">
+                    <div class="right-divider hidden-sm hidden-xs">
+                        <button type="submit" style="float: left;" class="btn btn-theme">Add File</button>
+                    </div>
+                </div>
+
             </form>
             <div class="panel-body ">
                 <table class="table table-striped table-advance table-hover">
@@ -139,31 +148,22 @@
 
                     <thead>
                     <tr>
-                        <th> Name</th>
-                        <th> Designation</th>
-                        <th> Email</th>
-                        <th> Role</th>
+                        <th style="width: 80%"> Name</th>
                         <th> Remove</th>
                         <th> Update</th>
                     </tr>
                     </thead>
                     <tbody>
                     <?php
-                    $sql = "SELECT * FROM users";
+                    $sql = "SELECT * FROM files";
                     $result = $conn->query($sql);
                     if ($result->num_rows > 0) {
                         // output data of each row
                         while ($row = $result->fetch_assoc()) {
                             echo '<tr>
-                                    <td>' . $row["user_name"] . '</td>';
-                            $sql2 = "SELECT * FROM designation where designation_id=" . $row["designation_id"];
-                            $result2 = $conn->query($sql2);
-                            $row2 = $result2->fetch_assoc();
-                            echo '<td>' . $row2["designation_name"] . '</td>
-                                        <td>' . $row["email"] . '</td>
-                                        <td>' . $row["role"] . '</td>
-                                    <td><a href="core/removeuser.php?id=' . $row["user_id"] . '" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a></td>
-                                    <td><a href="updatecollegueprofile.php?userid=' . $row["user_id"] . '" class="btn btn-warning btn-xs"><i class="fa fa-refresh "></i></a></td>
+                                    <td> <a href="uploads/documents/'. $row["url"] . '" target="_blank" >'. $row["namee"] . '</td>';
+                            echo '<td><a href="core/removeuser.php?id=' . $row["user_id"] . '" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a></td>
+                                  <td><a href="updatecollegueprofile.php?userid=' . $row["user_id"] . '" class="btn btn-warning btn-xs"><i class="fa fa-refresh "></i></a></td>
                                 </tr>';
                         }
                     }

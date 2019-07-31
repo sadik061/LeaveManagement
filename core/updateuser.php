@@ -49,7 +49,7 @@ if ($uploadOk == 0) {
 
 
 <?php include 'database.php';
-$sql = "UPDATE users SET user_name='" . $_POST["user_name"] . "', email='" . $_POST["email"] . "', password='" . $_POST["password"] . "', designation_id=" . $_POST["designation_id"] . ", image='" . date('dmYHis') . round(microtime(true)) .basename($_FILES["fileToUpload"]["name"]). "', facebook='" . $_POST["facebook"] . "', linkedin='" . $_POST["linkedin"] . "', skype='" . $_POST["skype"] . "', role='" . $_POST["role"] . "' WHERE user_id=" . $_POST['userid'];
+$sql = "UPDATE users SET user_name='" . $_POST["user_name"] . "', email='" . $_POST["email"] . "', password='" . $_POST["password"] . "', designation_id=" . $_POST["designation_id"] . ", image='" .basename($_FILES["fileToUpload"]["name"]). "', facebook='" . $_POST["facebook"] . "', linkedin='" . $_POST["linkedin"] . "', skype='" . $_POST["skype"] . "', role='" . $_POST["role"] . "' WHERE user_id=" . $_POST['userid'];
 mysqli_query($conn, $sql);
 mysqli_close($conn);
 header("Location: ../user.php");

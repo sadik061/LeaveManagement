@@ -23,7 +23,7 @@ $row = $result->fetch_assoc();
 if($previous+$_GET['days']<$row["available_leave"]) {
 
     $stmt = $conn->prepare("INSERT INTO application (user_id, subject, message, status,subday, days, leave_Date, seen) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssssss", $_SESSION["userid"],$_GET['subject'], $_GET['message'], $status, $Year, $_GET['days'], $_GET['date'], $seen);
+    $stmt->bind_param($_SESSION["userid"],$_GET['subject'], $_GET['message'], $status, $Year, $_GET['days'], $_GET['date'], $seen);
     $stmt->execute();
 /*    if ($stmt->execute()) {
     echo "worked";

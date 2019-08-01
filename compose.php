@@ -32,8 +32,18 @@
                                         //echo $row["designation_name"]; ?></h4>
                                     <h4>Prfessional Associate LTD.</h4>
                                     <h4>Adabor, Dhaka-1207</h4><br>
-                                    <h4>Subject: <input type="text" name="subject" class="form-control"
-                                                        style="display: initial;width: 64%;"></h4>
+                                    <h4>Subject: 
+
+                                    <select id="subject" name="subject">
+                                        <option value="earn_leave">Earn Leave</option>
+                                        <option value="maternity_leave">Maternity Leave</option>
+                                        <option value="urgent_leave">Urgent Leave</option>
+                                        <option value="medical_leave">Medical Leave</option>
+                                        <option value="casual_leave">Casual Leave</option>
+                                        <option value="other_leave">Other Leave</option>
+                                    </select>
+                                    </h4>
+
                                     <br><h4>Dear Sir,</h4><br>
                                 </div>
                                 <div class="col-md-4">

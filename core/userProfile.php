@@ -3,7 +3,6 @@
 // session_start();
 require 'databaseClass.php';
 
-
 class User
 {   
     public function __construct($userid){
@@ -35,15 +34,16 @@ class User
         $conn = $connection->getConnection();
 
         if(in_array($leaveType, ['earn_leave','maternity_leave','urgent_leave'])){
+            // if leave_type is in ['earn_leave','maternity_leave','urgent_leave']
             $query = sprintf("SELECT %s as days FROM users WHERE users.user_id=%s",$leaveType,$this->userid);
         }
         else{
+            // if leave_type is in [other_leave, medical_leave, casual_leave]
             $query = sprintf("SELECT %s as days FROM designation WHERE designation_id=%s",$leaveType,$this->designation_id);
         }
 
         $leave = $conn->query($query)->fetch_object()->days;
 
-        // $availableLeave = $this->earn_leave + $designation_leave - $taken_leave;
 
         return $leave;
     }

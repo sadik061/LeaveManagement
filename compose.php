@@ -35,6 +35,7 @@
                                     <h4>Subject: 
 
                                     <select id="subject" name="subject">
+                                        <option value="">---</option>
                                         <option value="earn_leave">Earn Leave</option>
                                         <option value="maternity_leave">Maternity Leave</option>
                                         <option value="urgent_leave">Urgent Leave</option>

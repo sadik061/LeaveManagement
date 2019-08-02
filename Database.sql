@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 01, 2019 at 04:13 AM
+-- Generation Time: Aug 02, 2019 at 02:37 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -47,11 +47,8 @@ CREATE TABLE `application` (
 --
 
 INSERT INTO `application` (`application_id`, `user_id`, `subject`, `message`, `status`, `subday`, `days`, `leave_Date`, `seen`, `department`, `admin`) VALUES
-(1, 2, 'adwadwa', 'dawdawdawd', 'approved', '2019-07-15', 3, '2019-07-15', 'no', 1, 1),
-(3, 4, 'adawdawd', 'dawdawd', 'rejected', '2019-07-15', 3, '2019-07-16', 'no', 1, 0),
-(4, 2, 'checking email', 'Don\'t know', 'rejected', '2019-07-15', 2, '2019-07-16', 'no', 1, 1),
-(5, 2, 'hares checking', 'dwadawdaw', 'approved', '2019-07-15', 1, '2019-07-16', 'no', 1, 1),
-(6, 2, 'hares checking', 'matha betha', 'pending', '2019-07-31', 1, '2019-08-02', 'no', 1, 0);
+(1, 2, 'urgent_leave', 'matha betha', 'rejected', '2019-08-02', 0, '2019-08-03', 'no', 1, 0),
+(2, 2, 'maternity_leave', 'matha betha', 'approved', '2019-08-02', 10, '2019-08-14', 'no', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -73,7 +70,7 @@ CREATE TABLE `designation` (
 
 INSERT INTO `designation` (`designation_id`, `designation_name`, `casual_leave`, `medical_leave`, `other_leave`) VALUES
 (1, 'software developer', 1, 2, 3),
-(2, 'Junior Software Developer', 15, 0, 0);
+(2, 'Junior Software Developer', 15, 5, 3);
 
 -- --------------------------------------------------------
 
@@ -140,17 +137,20 @@ CREATE TABLE `users` (
   `earn_leave` int(11) NOT NULL,
   `maternity_leave` int(11) NOT NULL,
   `urgent_leave` int(11) NOT NULL,
-  `earn_leave_year` int(11) NOT NULL
+  `earn_leave_year` int(11) NOT NULL,
+  `casual_leave` int(11) NOT NULL,
+  `medical_leave` int(11) NOT NULL,
+  `other_leave` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `user_name`, `email`, `password`, `designation_id`, `role`, `image`, `facebook`, `linkedin`, `skype`, `earn_leave`, `maternity_leave`, `urgent_leave`, `earn_leave_year`) VALUES
-(1, 'sadik', 'sadik061@gmail.com', '123', 1, 'super_admin', '15072019144048156319444860839477_2151287374926181_5067572813800407040_o.jpg', 'https://www.facebook.com/', 'https://www.facebook.com/', 'https://www.facebook.com/', 4, 5, 6, 0),
-(2, 'Hares', 'hares@gmail.com', '123', 2, 'user', '15072019121832156318591362263942_2176907292379183_4235726073351897088_n.jpg', '', '', '', 0, 0, 0, 0),
-(4, 'Rifat', 'rifat@gmail.com', '123', 2, 'department_head', '31072019091836156455751756209447_2302510863408070_1771955231173640192_n.jpg', '', '', '', 0, 0, 0, 0);
+INSERT INTO `users` (`user_id`, `user_name`, `email`, `password`, `designation_id`, `role`, `image`, `facebook`, `linkedin`, `skype`, `earn_leave`, `maternity_leave`, `urgent_leave`, `earn_leave_year`, `casual_leave`, `medical_leave`, `other_leave`) VALUES
+(1, 'sadik', 'sadik061@gmail.com', '123', 1, 'super_admin', '15072019144048156319444860839477_2151287374926181_5067572813800407040_o.jpg', 'https://www.facebook.com/', 'https://www.facebook.com/', 'https://www.facebook.com/', 0, 5, 6, 0, 0, 3, 0),
+(2, 'Hares', 'hares@gmail.com', '123', 2, 'user', '15072019121832156318591362263942_2176907292379183_4235726073351897088_n.jpg', '', '', '', 1, 0, 0, 0, 0, 3, 0),
+(4, 'Rifat', 'rifat@gmail.com', '123', 2, 'department_head', '31072019091836156455751756209447_2302510863408070_1771955231173640192_n.jpg', '', '', '', 0, 0, 0, 0, 0, 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -198,7 +198,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `application`
 --
 ALTER TABLE `application`
-  MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `designation`

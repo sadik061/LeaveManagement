@@ -1,12 +1,17 @@
 <?php include 'session.php'; ?>
 <?php include 'template/header.php'; ?>
 <?php
-if($_GET['error']==1){ ?>
+$error = $_GET['error'];
+if($error=='remainingError'){ ?>
     <script>
-        alert('Error');
+        alert('Please check your profile to see the remaining leave.');
+    </script>
+<?php }
+else if($error=='daysError'){ ?>
+    <script>
+        alert('Days can not be less than 1');
     </script>
 <?php } ?>
-?>
     <section id="main-content">
         <section class="wrapper">
             <!-- page start-->

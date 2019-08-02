@@ -49,7 +49,7 @@ class User
             $query = sprintf("SELECT ((SELECT %s FROM designation WHERE designation_id=%s)-(SELECT %s FROM users WHERE user_id=%s)) as days",$leaveType,$this->designation_id,$leaveType,$this->userid);
         }
 
-        echo $query;
+        
         $leave = $conn->query($query)->fetch_object()->days;
 
 
@@ -68,6 +68,7 @@ class User
         }
         else{
             // increasing leaves like medical_leave
+
             $query = sprintf("UPDATE users SET %s = %s+%s WHERE users.user_id = %s",$leaveType,$leaveType,$days,$this->userid);    
         }
 

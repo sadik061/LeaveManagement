@@ -1,5 +1,12 @@
 <?php include 'session.php'; ?>
 <?php include 'template/header.php'; ?>
+<?php
+if($_GET['error']==1){ ?>
+    <script>
+        alert('Error');
+    </script>
+<?php } ?>
+?>
     <section id="main-content">
         <section class="wrapper">
             <!-- page start-->
@@ -18,15 +25,14 @@
                     <section class="panel">
                         <div class="panel-body ">
                             <div class="mail-header row">
-                                <form action="core/compose.php" method="get">
+                                <form action="core/compose.php" method="POST">
                                 <div class="col-md-8">
                                     <h4>
                                         <?php
-                                        $Year = date('Y');
-                                        $Month = (int)date('m');
-                                        $mon = array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
-                                        $Day = date('d');
-                                        echo $mon[$Month] . " " . $Day . ", " . $Year; ?> </h4>
+                                        // todays's date
+                                        echo sprintf("%s %u, %u",DateTime::createFromFormat('!m', date("m"))->format('F'), date("d"),date("Y"));                                        
+                                        ?> 
+                                    </h4>
                                     <h4> Authority</h4>
                                     <h4> <?php
                                         //echo $row["designation_name"]; ?></h4>
@@ -34,8 +40,7 @@
                                     <h4>Adabor, Dhaka-1207</h4><br>
                                     <h4>Subject: 
 
-                                    <select id="subject" name="subject">
-                                        <option value="">---</option>
+                                    <select id="leave_type" name="leave_type">
                                         <option value="earn_leave">Earn Leave</option>
                                         <option value="maternity_leave">Maternity Leave</option>
                                         <option value="urgent_leave">Urgent Leave</option>
@@ -56,7 +61,7 @@
                             </div>
 
                             <div>
-                                <h4>I am writing this letter to inform and to get permission for the leaves form <input
+                                <h4>I am writing this letter to inform and to get permission for the leaves from <input
                                             type="date" class="form-control"
                                             style="display: initial;width:15%;" name="date"
                                             placeholder="date"> for <input type="text" class="form-control"

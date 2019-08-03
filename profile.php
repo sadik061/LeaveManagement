@@ -125,8 +125,8 @@
                     <thead>
                     <tr>
                         <th style="width: 80%"> Name</th>
+                        <th> Download</th>
                         <th> Remove</th>
-                        <th> Update</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -135,11 +135,9 @@
                     $files = $user->getFiles();
                     
                     foreach($files as $file){
-                        echo '<tr>
-                                    <td> <a href="uploads/documents/'. $file["url"] . '" target="_blank" >'. $file["namee"] . '</td>';
-                        echo '<td><a href="core/removeuser.php?id=' . $user->user_name . '" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a></td>
-                                <td><a href="updatecollegueprofile.php?userid=' . $user->user_name . '" class="btn btn-warning btn-xs"><i class="fa fa-refresh "></i></a></td>
-                            </tr>';
+                        echo '<tr><td> <a href="uploads/documents/'. $file["url"] . '" target="_blank" >'. $file["namee"] . '</td>';
+                        echo sprintf('<td><a href="core/downloadfile.php?url=%s&filename=%s" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a></td>',$file["url"],$file["namee"]);
+                        echo sprintf('<td><a href="core/removefile.php?fileid=%s&filename=%s" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a></td></tr>',$file["fileid"],$file["url"]);
                     }
 
                     ?>

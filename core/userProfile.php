@@ -1,15 +1,15 @@
 <?php
 
 // session_start();
-require 'databaseClass.php';
+// require 'databaseClass.php';
+require 'database.php';
 
 class User
 {   
     public function __construct($userid){
         $this->userid = $userid;
 
-        $connection = new Connection();
-        $conn = $connection->getConnection();
+        require('database.php');
 
         $query = sprintf("SELECT * FROM users WHERE user_id=%s",$this->userid);
         $result = $conn->query($query);
@@ -35,8 +35,7 @@ class User
     }
 
     public function getLeave($leaveType){
-        $connection = new Connection();
-        $conn = $connection->getConnection();
+        require('database.php');
 
         if(in_array($leaveType, ['earn_leave','maternity_leave','urgent_leave'])){
             // this leaves are in user table
@@ -57,8 +56,7 @@ class User
     }
     
     public function setLeave($leaveType,$days){
-        $connection = new Connection();
-        $conn = $connection->getConnection();
+        require('database.php');
 
         if(in_array($leaveType, ['earn_leave','casual_leave','medical_leave','other_leave'])){
             // this leaves are in user table
@@ -94,8 +92,7 @@ class User
 
 
     public function getDesignation(){
-        $connection = new Connection();
-        $conn = $connection->getConnection();
+        require('database.php');
 
         $query = sprintf("SELECT designation.designation_name FROM users inner join designation on users.designation_id=designation.designation_id where user_id=%s",$this->userid);
         $designation = $conn->query($query)->fetch_object()->designation_name;
@@ -104,8 +101,7 @@ class User
     }
     
     public function getFiles(){
-        $connection = new Connection();
-        $conn = $connection->getConnection();
+        require('database.php');
 
         $query = sprintf("SELECT * FROM files where user_id=%s",$this->userid);
         $fileArray = array();
@@ -114,7 +110,7 @@ class User
         
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-                array_push($fileArray,array("url" => $row["url"], "namee" => $row["namee"]));
+                array_push($fileArray,array("user_id" => $row["user_id"], "fileid" => $row["id"],"url" => $row["url"], "namee" => $row["namee"]));
             }
         }
 

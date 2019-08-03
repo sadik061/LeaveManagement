@@ -7,8 +7,6 @@ include 'userProfile.php';
 // require 'databaseClass.php';
 
 $user = new User($_SESSION["userid"]);
-$connection = new Connection();
-$conn = $connection->getConnection();
 
 $leaveType = $_POST['leave_type'];
 $days_needed = $_POST['days'];

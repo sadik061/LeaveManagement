@@ -1,0 +1,30 @@
+WebHR 
+-> Track employee hours, leaves and shifts
+-> managing employee time  
+-> generating reports
+-> allows the employees to clock in and out of shifts
+-> view schedules 
+-> request time off
+-> voice enabled commands
+-> employees update their profiles, data and records themselves.
+-> identifying high performed employees 
+-> Applicant tracking
+    -> post job openings 
+        -> embed it into 
+            -> their websites
+            -> post it to social media
+            -> refer it to a friend 
+            -> integrated with popular job sites
+    -> collecting the applications
+    -> track the workers
+    -> score them individually
+
+
+https://checkpoint.cvcheck.com/hris-7-tips-for-choosing-the-right-system-for-your-company/ 	
+https://blog.capterra.com/free-hr-software/#8
+
+HRIS = Human Resource Information System 
+HCM = Human Capital Management
+HRMS = Human Resource Management System
+
+Zoho documentation - https://docs.google.com/document/d/1TOjN2Ei_Ua66cEsu40ZBBkPVlKLgvLhyLiAud_uwirU/edit?usp=sharing

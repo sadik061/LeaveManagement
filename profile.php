@@ -136,7 +136,7 @@
                     
                     foreach($files as $file){
                         echo '<tr><td> <a href="uploads/documents/'. $file["url"] . '" target="_blank" >'. $file["namee"] . '</td>';
-                        echo sprintf('<td><a href="core/downloadfile.php?url=%s&filename=%s" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a></td>',$file["url"],$file["namee"]);
+                        echo sprintf('<td><a href="core/downloadfile.php?url=%s&filename=%s" class="btn btn-primary btn-xs"><i class="fa fa-download "></i></a></td>',$file["url"],$file["namee"]);
                         echo sprintf('<td><a href="core/removefile.php?fileid=%s&filename=%s" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a></td></tr>',$file["fileid"],$file["url"]);
                     }
 

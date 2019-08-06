@@ -16,6 +16,10 @@ class User
 
         while($row = $result->fetch_assoc()){
             $this->user_name = $row['user_name'];
+            $this->phone = $row['phone'];
+            $this->blood = $row['blood'];
+            $this->address = $row['address'];
+            $this->point = $row['point'];
             $this->email = $row['email'];
             $this->password = $row['password'];
             $this->designation_id = $row['designation_id'];

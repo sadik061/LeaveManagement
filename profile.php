@@ -35,6 +35,26 @@
 
                                         </div>
                                         <div class="form-group">
+                                            <label class="col-sm-3 col-sm-3 control-label">Phone:</label>
+                                            <label class="col-sm-3 col-sm-3 control-label"><?php echo $user->phone; ?></label>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 col-sm-3 control-label">Blood group:</label>
+                                            <label class="col-sm-3 col-sm-3 control-label"><?php echo $user->blood; ?></label>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 col-sm-3 control-label">Address:</label>
+                                            <label class="col-sm-3 col-sm-3 control-label"><?php echo $user->address; ?></label>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 col-sm-3 control-label">Point:</label>
+                                            <label class="col-sm-3 col-sm-3 control-label"><?php echo $user->point; ?></label>
+
+                                        </div>
+                                        <div class="form-group">
                                             <label class="col-sm-3 col-sm-3 control-label">Designation:</label>
                                             <label class="col-sm-3 col-sm-3 control-label"><?php echo $user->getDesignation(); ?></label>
                                         </div>

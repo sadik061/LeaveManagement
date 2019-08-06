@@ -1,4 +1,6 @@
- <?php include 'session.php'; ?>
+ <?php include 'session.php'; 
+ include 'core/userProfile.php';
+ ?>
 <?php include 'template/header.php'; ?>
 
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

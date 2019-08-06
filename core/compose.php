@@ -20,22 +20,24 @@ $seen = 'no';
 
 $leaveLeft = $user->getLeave($leaveType);
 
-if($days_needed > $leaveLeft){
-    // error
-    header("Location: ../compose.php?error=remainingError");
-    exit(1);
-}
-else if($days < 1){
+if($days < 1){
     // error
     header("Location: ../compose.php?error=daysError");
     exit(1);
 }
-else{
-    $query = sprintf("INSERT INTO application (user_id, subject, message, status,subday, days, leave_Date, seen, department, admin) 
-                VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",$user->userid,$subject,$msg,$status,date("Y-m-d"),$days,$leaveDate,$seen,0,0);
+
+if(in_array($leaveType, ['earn_leave','casual_leave','medical_leave','other_leave'])){
+    // This leaves need to be checked
+
+    if($days_needed > $leaveLeft){
+        // error
+        header("Location: ../compose.php?error=remainingError");
+        exit(1);
+    }
 }
 
-
+$query = sprintf("INSERT INTO application (user_id, subject, message, status,subday, days, leave_Date, seen, department, admin) 
+                    VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",$user->userid,$subject,$msg,$status,date("Y-m-d"),$days,$leaveDate,$seen,0,0);
 
 $conn->query($query);
 // echo $query;

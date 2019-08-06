@@ -25,6 +25,7 @@
     <link rel="stylesheet" type="text/css" href="lib/bootstrap-daterangepicker/daterangepicker.css" />
     <link rel="stylesheet" type="text/css" href="lib/bootstrap-timepicker/compiled/timepicker.css" />
     <link rel="stylesheet" type="text/css" href="lib/bootstrap-datetimepicker/datertimepicker.css" />
+    <link href="css/custome.css" rel="stylesheet">
 
     <!-- =======================================================
       Template Name: Dashio

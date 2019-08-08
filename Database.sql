@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 02, 2019 at 02:37 PM
+-- Generation Time: Aug 08, 2019 at 11:16 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -48,7 +48,8 @@ CREATE TABLE `application` (
 
 INSERT INTO `application` (`application_id`, `user_id`, `subject`, `message`, `status`, `subday`, `days`, `leave_Date`, `seen`, `department`, `admin`) VALUES
 (1, 2, 'urgent_leave', 'matha betha', 'rejected', '2019-08-02', 0, '2019-08-03', 'no', 1, 0),
-(2, 2, 'maternity_leave', 'matha betha', 'approved', '2019-08-02', 10, '2019-08-14', 'no', 1, 1);
+(2, 2, 'maternity_leave', 'matha betha', 'approved', '2019-08-02', 10, '2019-08-14', 'no', 1, 1),
+(3, 2, 'maternity_leave', 'matha betha', 'pending', '2019-08-05', 3, '2019-08-01', 'no', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -90,9 +91,31 @@ CREATE TABLE `files` (
 --
 
 INSERT INTO `files` (`user_id`, `id`, `url`, `namee`) VALUES
-(1, 11, 'subdomain.txt', 'demo'),
-(1, 12, '67182619_2508724092505686_1523694086966476800_n (2).jpg', 'CV'),
-(1, 13, 'Conversion actions - Bayou City House Buyers - Google Ads (1).pdf', 'j');
+(2, 22, 'HR.txt', 'HR'),
+(2, 23, 'top-free-5c-ope_31888387.png', 'hr soft'),
+(2, 24, 'wifi.py', 'wifi');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `messages`
+--
+
+CREATE TABLE `messages` (
+  `msg_id` int(11) NOT NULL,
+  `from_user_id` int(11) NOT NULL,
+  `to_user_id` int(11) NOT NULL,
+  `msg` varchar(10000) NOT NULL,
+  `seen` int(1) NOT NULL,
+  `datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `messages`
+--
+
+INSERT INTO `messages` (`msg_id`, `from_user_id`, `to_user_id`, `msg`, `seen`, `datetime`) VALUES
+(18, 1, 2, 'Hey Saddik,\r\nMeet me !', 1, '2019-08-06 12:09:58');
 
 -- --------------------------------------------------------
 
@@ -126,6 +149,10 @@ INSERT INTO `notice_board` (`notice_board_id`, `notice_board_details`, `notice_b
 CREATE TABLE `users` (
   `user_id` int(11) NOT NULL,
   `user_name` varchar(30) DEFAULT NULL,
+  `phone` varchar(15) NOT NULL,
+  `blood` varchar(3) NOT NULL,
+  `address` varchar(1000) NOT NULL,
+  `point` int(10) NOT NULL,
   `email` varchar(30) DEFAULT NULL,
   `password` varchar(30) DEFAULT NULL,
   `designation_id` int(11) DEFAULT NULL,
@@ -147,10 +174,10 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `user_name`, `email`, `password`, `designation_id`, `role`, `image`, `facebook`, `linkedin`, `skype`, `earn_leave`, `maternity_leave`, `urgent_leave`, `earn_leave_year`, `casual_leave`, `medical_leave`, `other_leave`) VALUES
-(1, 'sadik', 'sadik061@gmail.com', '123', 1, 'super_admin', '15072019144048156319444860839477_2151287374926181_5067572813800407040_o.jpg', 'https://www.facebook.com/', 'https://www.facebook.com/', 'https://www.facebook.com/', 0, 5, 6, 0, 0, 3, 0),
-(2, 'Hares', 'hares@gmail.com', '123', 2, 'user', '15072019121832156318591362263942_2176907292379183_4235726073351897088_n.jpg', '', '', '', 1, 0, 0, 0, 0, 3, 0),
-(4, 'Rifat', 'rifat@gmail.com', '123', 2, 'department_head', '31072019091836156455751756209447_2302510863408070_1771955231173640192_n.jpg', '', '', '', 0, 0, 0, 0, 0, 0, 0);
+INSERT INTO `users` (`user_id`, `user_name`, `phone`, `blood`, `address`, `point`, `email`, `password`, `designation_id`, `role`, `image`, `facebook`, `linkedin`, `skype`, `earn_leave`, `maternity_leave`, `urgent_leave`, `earn_leave_year`, `casual_leave`, `medical_leave`, `other_leave`) VALUES
+(1, 'sadik', '123456', 'A+', 'Mohammadi Rd, Dhaka', 0, 'sadik061@gmail.com', '123', 1, 'super_admin', '15072019144048156319444860839477_2151287374926181_5067572813800407040_o.jpg', 'https://www.facebook.com/', 'https://www.facebook.com/', 'https://www.facebook.com/', 0, 5, 6, 0, 0, 3, 0),
+(2, 'Hares', '498651', 'B+', 'Mohammadi Rd, Dhaka', 0, 'hares@gmail.com', '123', 2, 'user', '15072019121832156318591362263942_2176907292379183_4235726073351897088_n.jpg', '', '', '', 1, 0, 0, 0, 0, 3, 0),
+(4, 'Rifat', '498161', 'AB+', 'Mohammadi Rd, Dhaka', 0, 'rifat@gmail.com', '123', 2, 'department_head', '31072019091836156455751756209447_2302510863408070_1771955231173640192_n.jpg', '', '', '', 0, 0, 0, 0, 0, 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -177,6 +204,12 @@ ALTER TABLE `files`
   ADD KEY `user_id` (`user_id`);
 
 --
+-- Indexes for table `messages`
+--
+ALTER TABLE `messages`
+  ADD PRIMARY KEY (`msg_id`);
+
+--
 -- Indexes for table `notice_board`
 --
 ALTER TABLE `notice_board`
@@ -198,7 +231,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `application`
 --
 ALTER TABLE `application`
-  MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `designation`
@@ -210,7 +243,13 @@ ALTER TABLE `designation`
 -- AUTO_INCREMENT for table `files`
 --
 ALTER TABLE `files`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- AUTO_INCREMENT for table `messages`
+--
+ALTER TABLE `messages`
+  MODIFY `msg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `notice_board`

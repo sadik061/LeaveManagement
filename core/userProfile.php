@@ -69,7 +69,7 @@ class User
             $query = sprintf("UPDATE users SET %s = %s-%s WHERE users.user_id = %s",$leaveType,$leaveType,$days,$this->userid);
         }
         else{
-            // increasing leaves like medical_leave
+            // increasing leaves like urgent_leave
 
             $query = sprintf("UPDATE users SET %s = %s+%s WHERE users.user_id = %s",$leaveType,$leaveType,$days,$this->userid);    
         }

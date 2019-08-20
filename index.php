@@ -1,20 +1,23 @@
 <?php include 'session.php'; 
-include 'core/userProfile.php';
+include 'core/notice.php';
+
+
 ?>
 <?php include 'template/header.php'; ?>
-    <section id="main-content">
-        <section class="wrapper">
-            <!-- page start-->
-            <div class="row mt">
-                <?php include 'template/sidebar.php';?>
-                <?php include 'core/database.php';
-                $sql = "SELECT * FROM users inner join designation on users.designation_id=designation.designation_id where user_id=" . $_SESSION["userid"];
+<section id="main-content">
+    <section class="wrapper">
+        <!-- page start-->
+        <div class="row mt">
+            <?php include 'template/sidebar.php';
+                $user = new User($_SESSION["userid"]);
+                include 'core/database.php';
+                // $sql = "SELECT * FROM users inner join designation on users.designation_id=designation.designation_id where user_id=" . $_SESSION["userid"];
 
-                $result = $conn->query($sql);
-                if ($result->num_rows > 0) {
-                    // output data of each row
-                    $row = $result->fetch_assoc();
-                }
+                // $result = $conn->query($sql);
+                // if ($result->num_rows > 0) {
+                //     // output data of each row
+                //     $row = $result->fetch_assoc();
+                // }
                 ?>
                 <div class="col-sm-9" style="margin-left: 25%;">
                     <section class="panel">
@@ -27,69 +30,51 @@ include 'core/userProfile.php';
 
 
                             <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-                            <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+                            <script src="//code.jquery.com/jquery'-1.11.1.min.js"></script>
                             <!------ Include the above in your HEAD tag ---------->
-                            <div class="row content-panel">
+                            <div class="row content-panel" style="padding: 15px 15px;"> 
 
-                                    <?php if ($_SESSION["role"] == "admin") { ?>
-                                        <textarea id="notice" class="text" cols="86" rows ="10" name="notice" form="noticeform"></textarea>
-
+                                    <?php if ($_SESSION["role"] == "super_admin") { ?>
+                                        
                                         <form class="form-horizontal style-form" action="core/addNotice.php" method="post" id="noticeform">
-
+                                        
+                                            <input style="width:100%" type="text" name="notice_subject" id="notice_subject" placeholder="Enter Subject" required>
+                                            <br><br>
+                                            <textarea id="notice" class="text" cols="96" rows ="10" style="width:100%;" name="notice" form="noticeform" placeholder="Enter notice" required></textarea>
 
                                             <button type="submit" class="btn btn-theme">Add Notice</button>
 
                                         </form>
 
                                     <?php }?>
-                                </div>
-                            <div class="row content-panel">
-                                    <h2>Notice Board</h2>
-                                </div>
-                                <div class="qa-message-list row content-panel" id="wallmessages" style="overflow: scroll; border: 1px solid #ccc; height: 300px;">
-
-                                    <?php include 'core/database.php';
-                                    $sql = "SELECT * FROM notice_board JOIN users where notice_board.notice_board_notice_given_user=users.user_id ORDER BY notice_board_modification_time DESC";
-
-                                    $result = $conn->query($sql);
-                                    if ($result->num_rows > 0) {
-                                        foreach($result as $data)
-                                        {
-                                            echo "<div class=\"message-item\" id=\"m16\">
-                                        <div class=\"message-inner\">
-                                            <div class=\"message-head clearfix\">
-                                                <div class=\"user-detail\">
-                                                    <div class=\"post-meta\">
-                                                        <div class=\"asker-meta\" style='color: #4ECDC4'>
-                                                            <span class=\"qa-message-what\"></span>
-                                                            <span class=\"qa-message-when\">
-												<span class=\"qa-message-when-data\">".$data["notice_board_modification_time"]."</span>
-											</span>
-                                                            <span class=\"qa-message-who\">
-												<span class=\"qa-message-who-pad\">by </span>
-												<span class=\"qa-message-who-data\"><a href=\"./index.php?qa=user&qa_".$data["user_id"]."=".$data["user_name"]."\">".$data["user_name"]."</a></span>
-											</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class=\"qa-message-content\">
-                                               ".$data["notice_board_details"]."
-                                            </div>
-                                        </div></div>";
-                                        }
-                                        // output data of each row
-                                        //$row = $result->fetch_assoc();
-
-                                    }
-                                    ?>
-
-
-                                </div>
-
-
                             </div>
+                                
+                            <?php $notices = getNotice(); 
+                            
+                            ?>
+                            <div class="accordion" id="accordionExample">
+                                
+                                <?php foreach($notices as $notice){ ?>
+                                <div>
+                                    <div class="card-header" id="heading-msg-<?php echo $notice["id"] ?>">
+                                    <h2 class="mb-0"">
+                                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse-msg<?php echo $notice["id"] ?>" aria-expanded="true" aria-controls="collapse-msg<?php echo $notice["id"] ?>">
+                                        <?php echo $notice["subject"] ?>
+                                        </button>
+                                        <p style="float: right;font-size: small;margin-top: 1%;"><?php echo $notice["time"] ?></p>
+                                    </h2>
+                                    
+                                    </div>
 
+                                    <div id="collapse-msg<?php echo $notice["id"] ?>" class="collapse" aria-labelledby="heading-msg<?php echo $notice["id"] ?>" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <p><?php echo $notice["notice"] ?></p>
+                                        <p>Posted by <?php echo $notice["user_name"] ?></p>
+                                    </div>
+                                    </div>
+                                </div>
+                                <?php } ?>
+                            </div>
 
                         </div>
 

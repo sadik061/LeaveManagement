@@ -22,29 +22,28 @@
                                         <input type="text" class="form-control" name="designation_name" value="">
                                     </div>
                                 </div>
-                                <!--<div class="form-group">
-                                    <label class="col-sm-2 col-sm-2 control-label">Parent</label>
-                                    <div class="col-sm-10">
-                                        <select class="form-control" name="parent_id">
-                                            <option value="0">None</option>
-                                            <?php include 'core/database.php';
-                                            $sql = "SELECT * FROM designation";
-                                            $result = $conn->query($sql);
-                                            if ($result->num_rows > 0) {
-                                                // output data of each row
-                                                while ($row = $result->fetch_assoc()) {
-
-                                                    echo '<option value="' . $row["designation_id"] . '">' . $row["designation_name"] . '</option>';
-                                                }
-                                            } ?>
-                                        </select>
-                                    </div>
-                                </div>--!>
+                                
 
                                 <div class="form-group">
-                                    <label class="col-sm-2 col-sm-2 control-label">Total Leave</label>
+                                    <label class="col-sm-2 col-sm-2 control-label">Casual Leave</label>
                                     <div class="col-sm-10">
                                         <input type="number" class="form-control" name="available_leave" value="">
+                                    </div>
+                                </div>
+                                
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 col-sm-2 control-label">Medical Leave</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control" name="casual_leave" value="">
+                                    </div>
+                                </div>
+                                
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 col-sm-2 control-label">Other Leave</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control" name="other_leave" value="">
                                     </div>
                                 </div>
 
@@ -67,7 +66,9 @@
                                 <thead>
                                 <tr>
                                     <th><i class="fa fa-bullhorn"></i> Designation</th>
-                                    <th><i class="fa fa-bookmark"></i> Total Leave</th>
+                                    <th><i class="fa fa-bookmark"></i> Casual Leave</th>
+                                    <th><i class="fa fa-bookmark"></i> Medical Leave</th>
+                                    <th><i class="fa fa-bookmark"></i> Other Leave</th>
                                     <th><i class=" fa fa-edit"></i> remove</th>
                                     <th><i class=" fa fa-edit"></i> update</th>
                                     <th></th>
@@ -80,11 +81,14 @@
                                 if ($result->num_rows > 0) {
                                     // output data of each row
                                     while ($row = $result->fetch_assoc()) {
-                                        echo '<tr><td>' . $row["designation_name"] . '</td>
-                                        <td>' . $row["available_leave"] . '</td>';
-                                    echo '<td><a href="core/removedesignation.php?id='.$row["designation_id"].'" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a></td>
-                                        <td><a href="updatedesignationview.php?des_id=' . $row["designation_id"] . '" class="btn btn-warning btn-xs"><i class="fa fa-refresh "></i></a></td>
-                                </tr>';
+                                        echo '<tr>
+                                                <td>' . $row["designation_name"] . '</td>
+                                                <td>' . $row["casual_leave"] . '</td>
+                                                <td>' . $row["medical_leave"] . '</td>
+                                                <td>' . $row["other_leave"] . '</td>
+                                                <td><a href="core/removedesignation.php?id='.$row["designation_id"].'" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a></td>
+                                                <td><a href="updatedesignationview.php?des_id=' . $row["designation_id"] . '" class="btn btn-warning btn-xs"><i class="fa fa-refresh "></i></a></td>
+                                            </tr>';
                                     }
                                 }
                                 $conn->close(); ?>

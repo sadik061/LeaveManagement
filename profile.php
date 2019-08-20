@@ -1,14 +1,16 @@
 <?php include 'session.php'; ?>
-<?php include 'core/userProfile.php'; 
-    $user = new User($_SESSION["userid"]);
-?>
+
 <?php include 'template/header.php'; ?>
-    <section id="main-content">
-        <section class="wrapper">
-            <!-- page start-->
-            <div class="row mt">
-                <?php include 'template/sidebar.php'; ?>
-                <?php include 'core/database.php'; ?>
+<section id="main-content">
+    <section class="wrapper">
+        <!-- page start-->
+        <div class="row mt">
+            <?php 
+                include 'template/sidebar.php'; 
+                include 'core/database.php'; 
+                $user = new User($_SESSION["userid"]);
+                
+                ?>
 
                 <div class="col-sm-9" style="margin-left: 25%;">
                     <section class="panel">

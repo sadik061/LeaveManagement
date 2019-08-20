@@ -1,6 +1,4 @@
 <?php include 'session.php'; 
-include 'core/userProfile.php'; 
-$user = new User($_SESSION["userid"]);
 ?>
 <?php include 'template/header.php'; ?>
 
@@ -11,7 +9,8 @@ $user = new User($_SESSION["userid"]);
     <section class="wrapper">
         <!-- page start-->
         <div class="row mt">
-            <?php include 'template/sidebar.php'; ?>
+            <?php include 'template/sidebar.php'; 
+            $user = new User($_SESSION["userid"]); ?>
 
             <div class="col-sm-9" style="margin-left: 25%;">
                 <section class="panel">

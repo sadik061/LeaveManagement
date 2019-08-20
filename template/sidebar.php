@@ -1,4 +1,5 @@
 <?php 
+    include 'core/userProfile.php';
     $user = new User($_SESSION["userid"]);
 ?>
 <div class="col-sm-3" style="position: fixed;">

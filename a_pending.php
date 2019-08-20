@@ -23,7 +23,6 @@
                                     <tbody>
                                     <?php include 'core/database.php';
 
-                                    include 'core/database.php';
                                     if (isset($_GET['pageno'])) {
                                         $pageno = $_GET['pageno'];
                                     } else {

@@ -2,13 +2,12 @@
 
 
 function getContacts(){
-    include 'core/userProfile.php';
     include 'core/database.php';
     include 'session.php';
     
-    $user = new User($_SESSION["userid"]);
+    $userid = $_SESSION["userid"];
 
-    $query = sprintf("SELECT users.*,designation.designation_name FROM users JOIN designation ON users.designation_id=designation.designation_id WHERE user_id != %s",$user->userid);
+    $query = sprintf("SELECT users.*,designation.designation_name FROM users JOIN designation ON users.designation_id=designation.designation_id WHERE user_id != %s",$userid);
     $userlist = array();
 
     $result = $conn->query($query);

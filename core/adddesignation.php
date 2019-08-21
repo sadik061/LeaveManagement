@@ -1,14 +1,11 @@
 <?php
 // Start the session
 session_start();
-?>
-<?php include 'database.php';
-$stmt = $conn->prepare("INSERT INTO designation (designation_name,casual_leave,medical_leave,other_leave) VALUES (?, ?, ?, ?)");
-$stmt->bind_param($_GET['designation_name'], $_GET['casual_leave'], $_GET['medical_leave'], $_GET['other_leave']);
-$stmt->execute();
-$stmt->close();
-$conn->close();
+include 'database.php';
+$sql = sprintf("INSERT INTO designation (designation_name,casual_leave,medical_leave,other_leave) VALUES ('%s', %s, %s, %s)",$_POST['designation_name'], $_POST['casual_leave'], $_POST['medical_leave'], $_POST['other_leave']);
+$conn->query($sql);
 header("Location: ../designation.php");
+// echo $sql;
 ?>
 
 

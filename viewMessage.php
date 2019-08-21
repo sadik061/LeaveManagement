@@ -1,7 +1,6 @@
 <?php
 
 include 'core/database.php';
-include 'core/userProfile.php';
 include 'core/message.php';
 include 'session.php';
 

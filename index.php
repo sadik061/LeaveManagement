@@ -49,7 +49,20 @@ include 'core/notice.php';
                                     <?php }?>
                             </div>
                                 
-                            <?php $notices = getNotice(); 
+                            <?php 
+                            if (isset($_GET['pageno'])) {
+                                $pageno = $_GET['pageno'];
+                            } else {
+                                $pageno = 1;
+                            }
+                            // $no_of_records_per_page = 10;
+                            // $offset = ($pageno-1) * $no_of_records_per_page;
+                            $access_msg = ($pageno-1)*10;
+
+                            $notices = getNotice(); 
+                            $total_pages = ceil(sizeof($notices) /10);
+
+                            $notices = array_slice($notices, $access_msg, $access_msg+10);
                             
                             ?>
                             <div class="accordion" id="accordionExample">
@@ -57,7 +70,7 @@ include 'core/notice.php';
                                 <?php foreach($notices as $notice){ ?>
                                 <div>
                                     <div class="card-header" id="heading-msg-<?php echo $notice["id"] ?>">
-                                    <h2 class="mb-0"">
+                                    <h2 class="mb-0">
                                         <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse-msg<?php echo $notice["id"] ?>" aria-expanded="true" aria-controls="collapse-msg<?php echo $notice["id"] ?>">
                                         <?php echo $notice["subject"] ?>
                                         </button>
@@ -75,6 +88,16 @@ include 'core/notice.php';
                                 </div>
                                 <?php } ?>
                             </div>
+                            <ul class="pagination">
+                                <li><a href="?pageno=1">First</a></li>
+                                <li class="<?php if($pageno <= 1){ echo 'disabled'; } ?>">
+                                    <a href="<?php if($pageno <= 1){ echo '#'; } else { echo "?pageno=".($pageno - 1); } ?>">Prev</a>
+                                </li>
+                                <li class="<?php if($pageno >= $total_pages){ echo 'disabled'; } ?>">
+                                    <a href="<?php if($pageno >= $total_pages){ echo '#'; } else { echo "?pageno=".($pageno + 1); } ?>">Next</a>
+                                </li>
+                                <li><a href="?pageno=<?php echo $total_pages; ?>">Last</a></li>
+                            </ul>
 
                         </div>
 

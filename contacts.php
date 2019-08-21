@@ -14,7 +14,7 @@ $users = getContacts();
 
                     <div class="col-md-12 mt">
                         <div class="content-panel">
-                            <h4><i class="fa fa-angle-right"></i> Hover Table</h4><hr>
+                            <h4><i class="fa fa-angle-right"></i> Contacts </h4><hr>
                             <table class="table table-hover">
                                 
                                 <tbody>

@@ -1,5 +1,4 @@
 <?php include 'session.php'; 
-include 'core/userProfile.php';
 include 'core/message.php';
 
 if(isset($_POST['message'])){
@@ -20,10 +19,10 @@ if(isset($_POST['message'])){
                             <h4><i class="fa fa-angle-right"></i> Compose message</h4><hr>
                             <form action="composeMsg.php?to=<?php echo $_GET['to'] ?>" method="post">
                                 
-                                <div>
-                                    <textarea name="message" id="" cols="130" rows="10"></textarea>
+                                <div style="padding: 15px 10px;">
+                                    <textarea name="message" id="" cols="130" style="width:100%;" rows="10"></textarea>
                                     <br>
-                                    <button type="submit">Send</button>
+                                    <button type="submit" class="btn btn-theme">Send</button>
                                 </div>
                             </form>
 

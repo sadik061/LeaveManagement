@@ -1,5 +1,4 @@
 <?php include 'session.php'; 
-include 'core/userProfile.php';
 ?>
 <?php include 'template/header.php'; ?>
     <section id="main-content">

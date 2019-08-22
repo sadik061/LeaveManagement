@@ -8,16 +8,20 @@ $targetfolder = "../uploads/documents/";
 $targetfolder = $targetfolder . basename( $_FILES['fileToUpload2']['name']) ;
 $file=basename( $_FILES['fileToUpload2']['name']);
 
-if(move_uploaded_file($_FILES["fileToUpload2"]["tmp_name"], $targetfolder))
+$file_name = $_POST["name"]; // The file name user want to see
+
+if ($file_name == ""){
+    echo "You have not given the name of file";
+}
+
+else if(move_uploaded_file($_FILES["fileToUpload2"]["tmp_name"], $targetfolder))
 {
 
-    echo "The file ". basename( $_FILES['fileToUpload2']['name']). " is uploaded";
+    // echo "The file ". basename( $_FILES['fileToUpload2']['name']). " is uploaded";
     include 'database.php';
-    $stmt = $conn->prepare("INSERT INTO files (url, user_id, namee) VALUES (?, ?, ?)");
-    $stmt->bind_param("sss", $file, $_SESSION['userid'],$_POST["name"]);
-    $stmt->execute();
-    $stmt->close();
-    $conn->close();
+    $sql = sprintf("INSERT INTO files (url, user_id, namee) VALUES ('%s', '%s', '%s')",$file, $_SESSION['userid'],$file_name);
+    $conn->query($sql);
+    // echo $sql;
     header("Location: ../profile.php");
 }
 

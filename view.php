@@ -83,7 +83,7 @@
                                 <h4>I shall be highly obliged for your act of kindness.</h4><br>
                                 <h4>Thanks in anticipation.</h4><br><br>
                                 <h4>Your sincerely,</h4>
-                                <h4><?php echo $row["user_name"] ?></h4>
+                                <a href="showProfile.php?userid=<?php echo $row["user_id"] ?>" ?><h4><?php echo $row["user_name"] ?></h4></a>
                                 <h4> <?php
                                     $sql2 = "SELECT * FROM designation where designation_id=" . $row["designation_id"];
                                     $result2 = $conn->query($sql2);

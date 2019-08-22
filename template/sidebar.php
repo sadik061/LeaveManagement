@@ -7,9 +7,11 @@
 
     <section class="panel">
         <div class="panel-body">
+            <?php if($user->role != "super_admin"){ ?>
             <a href="compose.php" class="btn btn-compose">
                 <i class="fa fa-pencil"></i> New Application
             </a>
+            <?php } ?>
             <ul class="nav nav-pills nav-stacked mail-nav" id="nav">
                 <li><a href="profile.php"> <i class="fa fa-user"></i> Profile</a></li>
                 <?php if ($user->role == "super_admin") { ?>
@@ -44,7 +46,7 @@
                     } ?>
 
                     <li><a href="designation.php"> <i class="fa fa-envelope-o"></i> Add designation</a></li>
-                    <li><a href="user.php"> <i class="fa fa-envelope-o"></i> Add colligue</a></li>
+                    <li><a href="user.php"> <i class="fa fa-envelope-o"></i> Add colleague</a></li>
                 <?php } else { ?>
                     <li><a href="pending.php"> <i class="fa fa-inbox"></i> pending
                     application <?php include 'core/database.php';

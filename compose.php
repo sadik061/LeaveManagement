@@ -1,7 +1,5 @@
 <?php include 'session.php'; 
-include 'core/userProfile.php';
-?>
-<?php include 'template/header.php'; ?>
+include 'template/header.php'; ?>
 <?php
 $error = $_GET['error'];
 if($error=='remainingError'){ ?>

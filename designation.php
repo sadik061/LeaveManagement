@@ -1,8 +1,15 @@
 <?php include 'session.php'; ?>
 
 <?php //Handleing error
-    if(isset($_GET['updaterror'])){
-        echo "<script type='text/javascript'>alert('Leave can not be leas than 0');</script>";
+    if(isset($_GET['updaterror'])){ ?>
+        <script type='text/javascript'>
+            var res = alert('Leave can not be leas than 0');
+
+            window.location.href = 'designation.php';
+
+        </script>
+
+<?php
     }
 ?>
 
@@ -66,7 +73,7 @@
                                 All desingations
                             </h4>
                         </header>
-                        <f class="panel-body ">
+                        <div class="panel-body ">
                             <table class="table table-striped table-advance table-hover">
 
 
@@ -149,7 +156,7 @@
                                       </div>
                                       <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                        <button id="modal_submit" type="submit" class="btn btn-primary">Save changes</button>
                                       </div>
                                     </div>
                                   </div>

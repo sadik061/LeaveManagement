@@ -27,6 +27,9 @@ $users = getContacts();
                                         <p><?php echo $user["email"] ?></p>
                                         <p><?php echo $user["phone"] ?></p>
                                     </td>
+                                    <?php if($_SESSION["role"] == "super_admin"){ ?>
+                                    <td><a class="btn btn-compose" type="submit" href="showProfile.php?userid=<?php echo $user["user_id"] ?>">Profile</a></td>
+                                    <?php } ?>
                                     <td><a class="btn btn-compose" href="composeMsg.php?to=<?php echo $user["user_id"] ?>">Message</a></td>
                                 </tr>
                                 <?php } ?>

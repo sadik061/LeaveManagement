@@ -13,17 +13,17 @@ $other_leave = $_POST["other_leave"];
 
 $sql = sprintf("UPDATE designation SET designation_name='%s',casual_leave=%s,medical_leave=%s,other_leave=%s WHERE designation_id=%s",$designation_name,$casual_leave,$medical_leave,$other_leave,$designation_id);
 
-if ($casual_leave < 0 || $medical_leave < 0 ||$other_leave < 0 ){
-    header("Location: ../designation.php?updaterror=1");
+$conn->query($sql);
+$conn->close();
+header("Location: ../designation.php");
+// if ($casual_leave < 0 || $medical_leave < 0 ||$other_leave < 0 ){
+//     header("Location: ../designation.php?updaterror=1");
 
-}
-else
-{
-    // echo $sql;
-    $conn->query($sql);
-    $conn->close();
-    header("Location: ../designation.php");
+// }
+// else
+// {
+//     // echo $sql;
 
-}
+// }
 
 ?>

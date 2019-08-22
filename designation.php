@@ -1,9 +1,9 @@
 <?php include 'session.php'; ?>
 
 <?php //Handleing error
-    if(isset($_GET['updaterror'])){ ?>
+    if(isset($_GET['conflicterror'])){ ?>
         <script type='text/javascript'>
-            var res = alert('Leave can not be leas than 0');
+            var res = alert('This designation is already exist');
 
             window.location.href = 'designation.php';
 
@@ -33,7 +33,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 col-sm-2 control-label">Designation Name</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="designation_name" value="">
+                                        <input type="text" class="form-control" name="designation_name" value="" required>
                                     </div>
                                 </div>
                                 
@@ -41,7 +41,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 col-sm-2 control-label">Casual Leave</label>
                                     <div class="col-sm-10">
-                                        <input type="number" class="form-control" name="casual_leave" value="">
+                                        <input type="number" class="form-control" name="casual_leave" value="" min="0" required>
                                     </div>
                                 </div>
                                 
@@ -49,7 +49,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 col-sm-2 control-label">Medical Leave</label>
                                     <div class="col-sm-10">
-                                        <input type="number" class="form-control" name="medical_leave" value="">
+                                        <input type="number" class="form-control" name="medical_leave" value="" min="0" required>
                                     </div>
                                 </div>
                                 
@@ -57,7 +57,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 col-sm-2 control-label">Other Leave</label>
                                     <div class="col-sm-10">
-                                        <input type="number" class="form-control" name="other_leave" value="">
+                                        <input type="number" class="form-control" name="other_leave" value="" min="0" required>
                                     </div>
                                 </div>
 
@@ -131,25 +131,25 @@
                                        
                                       <div class="col-sm-3">Designation: </div>
                                         <div class="col-sm-9">
-                                            <input style="width:100%" type="text" name="designation_name" id="designation_name" value="<?php echo $row["designation_name"] ?>">
+                                            <input style="width:100%" type="text" name="designation_name" id="designation_name" value=<?php echo $row["designation_name"] ?> required>
                                         </div>
                                         <br><br>
                                 
                                       <div class="col-sm-3">Casual leave: </div>
                                         <div class=col-sm-9>
-                                            <input style="width:100%" type="number" name="casual_leave" id="casual_leave" value="<?php echo $row["casual_leave"] ?>">
+                                            <input style="width:100%" type="number" name="casual_leave" id="casual_leave" value="<?php echo $row["casual_leave"] ?>" min="0">
                                         </div>
                                         <br><br>
                                 
                                         <div class="col-sm-3">Medical leave:</div>
                                         <div class="col-sm-9">
-                                            <input style="width:100%" type="number" name="medical_leave" id="medical_leave" value="<?php echo $row["medical_leave"] ?>">
+                                            <input style="width:100%" type="number" name="medical_leave" id="medical_leave" value="<?php echo $row["medical_leave"] ?>" min="0">
                                         </div>
                                         <br><br>
                                 
                                         <div class="col-sm-3">Other leave:</div>
                                         <div class="col-sm-9">
-                                            <input style="width:100%" type="number" name="other_leave" id="other_leave" value="<?php echo $row["other_leave"] ?>">
+                                            <input style="width:100%" type="number" name="other_leave" id="other_leave" value="<?php echo $row["other_leave"] ?>" min="0">
                                             <input style="visibility: hidden;" type="text" name="designation_id" id="designation_id" value="<?php echo $row["designation_id"] ?>"> 
                                         </div>
                                         <br><br>

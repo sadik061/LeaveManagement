@@ -59,10 +59,10 @@ include 'core/notice.php';
                             // $offset = ($pageno-1) * $no_of_records_per_page;
                             $access_msg = ($pageno-1)*10;
 
-                            $notices = getNotice(); 
-                            $total_pages = ceil(sizeof($notices) /10);
+                            $notices = getNotice($access_msg); 
+                            $total_pages = ceil(getAllNoticeSize() /10);
 
-                            $notices = array_slice($notices, $access_msg, $access_msg+10);
+                            // $notices = array_slice($notices, $access_msg, $access_msg+10);
                             
                             ?>
                             <div class="accordion" id="accordionExample">

@@ -66,6 +66,10 @@ if super-admin want to see someone's profile, system will direct to this file --
                                                 LTD.</label>
                                         </div>
                                         <div class="form-group">
+                                            <label class="col-sm-3 col-sm-3 control-label">Loan taken:</label>
+                                            <label class="col-sm-3 col-sm-3 control-label"><?php echo $user->loan ?></label>
+                                        </div>
+                                        <div class="form-group">
                                             <label class="col-sm-3 col-sm-3 control-label">Casual Leave Left:</label>
                                             <label class="col-sm-3 col-sm-3 control-label"><?php echo $user->getLeave('casual_leave'); ?> </label>
                                         </div>

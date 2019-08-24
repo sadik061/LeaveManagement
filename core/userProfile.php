@@ -23,6 +23,7 @@ class User
             $this->email = $row['email'];
             $this->password = $row['password'];
             $this->designation_id = $row['designation_id'];
+            $this->loan = $row['loan_taken'];
             $this->role = $row['role'];
             $this->image = $row['image'];
             $this->facebook = $row['facebook'];

@@ -77,12 +77,12 @@
                             <div>
                                 <h4>I am writing this letter to inform and to get permission for the leaves
                                     form <?php echo $row["leave_Date"]; ?> for <?php echo $row["days"]; ?>
-                                    days.<?php echo $row["message"]; ?>
+                                    days. <?php echo $row["message"]; ?>
 
                                 </h4><br>
-                                <h4>I shall be highly obliged for your act of kindness.</h4><br>
-                                <h4>Thanks in anticipation.</h4><br><br>
-                                <h4>Your sincerely,</h4>
+                                <h4>I shall be highly obliged for your act of kindness. </h4><br>
+                                <h4>Thanks in anticipation. </h4><br><br>
+                                <h4>Your sincerely, </h4>
                                 <a href="showProfile.php?userid=<?php echo $row["user_id"] ?>" ?><h4><?php echo $row["user_name"] ?></h4></a>
                                 <h4> <?php
                                     $sql2 = "SELECT * FROM designation where designation_id=" . $row["designation_id"];

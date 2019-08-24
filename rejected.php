@@ -45,7 +45,9 @@
                                         // output data of each row
                                         while ($row = $result->fetch_assoc()) { ?>
                                             <tr class="unread" >
-                                                <td class="view-message  dont-show" style="width: 30%"><a href="view.php?id=<?php echo $row["application_id"] ?>">  <?php echo $row["subject"] ?></a></td>
+                                                <td class="view-message  dont-show" style="width: 30%"><a href="view.php?id=<?php echo $row["application_id"] ?>">  <?php echo sprintf("%s %s",ucfirst(explode('_', $row['subject'])[0]), explode('_', $row['subject'])[1] ) ?></a></td>
+                                                <!-- if str = other_leave
+                                                    ucfirst(explode('_', str)[0]), explode('_', str)[1] = Other leave -->
                                                 <td class="view-message "><a href="view.php?id=<?php echo $row["application_id"] ?>"> <?php echo $row["message"] ?></a></td>
                                                 <td class="view-message  text-right"> <?php echo $row["subday"] ?></td>
                                             </tr >

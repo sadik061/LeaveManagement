@@ -4,7 +4,7 @@ function getNotice($from){
     
     require('database.php');
     
-    $query = sprintf("SELECT notice_board.*,users.user_name FROM notice_board JOIN users ON users.user_id=notice_board.notice_board_notice_given_user ORDER BY notice_board.notice_board_creation_time LIMIT %s,10",$from);
+    $query = sprintf("SELECT notice_board.*,users.user_name FROM notice_board JOIN users ON users.user_id=notice_board.notice_board_notice_given_user ORDER BY notice_board.notice_board_creation_time DESC LIMIT %s,10",$from);
     $noticeArray = array();
     
     $result = $conn->query($query);

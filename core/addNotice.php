@@ -9,7 +9,7 @@ $notice=$_POST['notice'];
 $notice_subject = $_POST['notice_subject'];
 $userid=$_SESSION["userid"];
 
-$sql = sprintf("INSERT INTO notice_board (subject,notice_board_details, notice_board_notice_given_user, notice_board_creation_time, notice_board_modification_time) VALUES (%s, %s, %s, '%s', '%s')",$notice_subject,$notice,$userid,$timestamp,$timestamp);
+$sql = sprintf("INSERT INTO notice_board (subject,notice_board_details, notice_board_notice_given_user, notice_board_creation_time, notice_board_modification_time) VALUES ('%s', '%s', '%s', '%s', '%s')",$notice_subject,$notice,$userid,$timestamp,$timestamp);
 $conn->query($sql);
 // $stmt->bind_param();
 

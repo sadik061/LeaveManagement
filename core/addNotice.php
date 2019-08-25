@@ -4,7 +4,9 @@ session_start();
 ?>
 <?php include 'database.php';
 
-$timestamp = date("Y-m-d H:i:s");
+$date = new DateTime('now', new DateTimeZone('Asia/Dhaka'));
+$timestamp = $date->format('Y-m-d H:i:s');
+// $timestamp = date("Y-m-d H:i:s");
 $notice=$_POST['notice'];
 $notice_subject = $_POST['notice_subject'];
 $userid=$_SESSION["userid"];

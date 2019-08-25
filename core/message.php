@@ -25,9 +25,12 @@ function deleteMessage($msg_id){
 function sendMessage($to_userid,$msg){
     include 'core/database.php';
 
+    $date = new DateTime('now', new DateTimeZone('Asia/Dhaka'));
+    $timestamp = $date->format('Y-m-d H:i:s');
+
     $from_userid = $_SESSION['userid'];
     $conn->query("INSERT INTO messages (from_user_id, to_user_id, msg, seen, datetime) 
-    VALUES ('$from_userid', '$to_userid', '$msg', '0', CURRENT_TIMESTAMP)");
+    VALUES ('$from_userid', '$to_userid', '$msg', '0', '$timestamp')");
     
 }
 

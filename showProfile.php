@@ -20,8 +20,7 @@ if super-admin want to see someone's profile, system will direct to this file --
                     <section class="panel">
                         
                         <div class="panel-body ">
-                            <form class="form-horizontal style-form" action="core/profileupdate.php"
-                                  method="post" enctype="multipart/form-data">
+                            <div class="form-horizontal style-form" enctype="multipart/form-data">
                                 <div class="row content-panel">
                                     <div class="col-md-4 profile-text mt mb centered">
                                         <div class="right-divider hidden-sm hidden-xs">
@@ -51,11 +50,25 @@ if super-admin want to see someone's profile, system will direct to this file --
                                             <label class="col-sm-3 col-sm-3 control-label"><?php echo $user->address; ?></label>
 
                                         </div>
+                                        <?php if($_SESSION["role"]=="super_admin"){ ?>
                                         <div class="form-group">
                                             <label class="col-sm-3 col-sm-3 control-label">Point:</label>
-                                            <label class="col-sm-3 col-sm-3 control-label"><?php echo $user->point; ?></label>
-
+                                            <label class="col-sm-3 col-sm-3 control-label">
+                                            <form action='core/updatePoint.php' method="POST">
+                                                <input type="number" name="point" id="point" placeholder="<?php echo $user->point; ?>">
+                                                <input type="text" name="userid" id="userid" value="<?php echo $user->userid; ?>" hidden>
+                                                <br><br>
+                                                <button type="submit">Submit Point</button>
+                                            </form>
+                                            </label>
                                         </div>
+                                        <?php } else { ?>
+                                            <div class="form-group">
+                                                <label class="col-sm-3 col-sm-3 control-label">Point:</label>
+                                                <label class="col-sm-3 col-sm-3 control-label"><?php echo $user->point; ?></label>
+                                            </div>
+                                        <?php } ?>
+
                                         <div class="form-group">
                                             <label class="col-sm-3 col-sm-3 control-label">Designation:</label>
                                             <label class="col-sm-3 col-sm-3 control-label"><?php echo $user->getDesignation(); ?></label>
@@ -114,7 +127,7 @@ if super-admin want to see someone's profile, system will direct to this file --
                                         </div>
 
 
-                            </form>
+                            </div>
 
                         </div>
                 </div>

@@ -90,6 +90,10 @@
                                             <label class="col-sm-3 col-sm-3 control-label"><?php echo $user->getLeave('urgent_leave'); ?> </label>
                                         </div>
                                         <div class="form-group">
+                                            <label class="col-sm-3 col-sm-3 control-label">Without Pay Leave Taken:</label>
+                                            <label class="col-sm-3 col-sm-3 control-label"><?php echo $user->getLeave('without_pay_leave'); ?> </label>
+                                        </div>
+                                        <div class="form-group">
                                             <label class="col-sm-3 col-sm-3 control-label">Other Leave Left:</label>
                                             <label class="col-sm-3 col-sm-3 control-label"><?php echo $user->getLeave('other_leave'); ?> </label>
                                         </div>

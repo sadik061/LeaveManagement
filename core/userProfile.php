@@ -6,6 +6,30 @@ require 'database.php';
 
 class User
 {
+    public $userid;
+    public $user_name;
+    public $phone;
+    public $blood;
+    public $address;
+    public $point;
+    public $email;
+    public $password;
+    public $designation_id;
+    public $loan;
+    public $role;
+    public $image;
+    public $facebook;
+    public $linkedin;
+    public $skype;
+    public $earn_leave;
+    public $maternity_leave;
+    public $urgent_leave;
+    public $casual_leave;
+    public $medical_leave;
+    public $without_pay_leave;
+    public $other_leave;
+    public $earn_leave_year;
+
     public function __construct($userid)
     {
         $this->userid = $userid;
@@ -35,6 +59,7 @@ class User
             $this->urgent_leave = $row['urgent_leave'];
             $this->casual_leave = $row['casual_leave'];
             $this->medical_leave = $row['medical_leave'];
+            $this->without_pay_leave = $row['without_pay_leave'];
             $this->other_leave = $row['other_leave'];
             $this->earn_leave_year = $row['earn_leave_year'];
         }
@@ -44,7 +69,7 @@ class User
     {
         require('database.php');
 
-        if (in_array($leaveType, ['earn_leave', 'maternity_leave', 'urgent_leave'])) {
+        if (in_array($leaveType, ['earn_leave', 'maternity_leave', 'urgent_leave','without_pay_leave'])) {
             // this leaves are in user table
             $query = sprintf("SELECT %s as days FROM users WHERE user_id=%s", $leaveType, $this->userid);
         } else {
@@ -64,33 +89,43 @@ class User
     public function setLeave($leaveType, $days)
     {
         require('database.php');
-
-        if (in_array($leaveType, ['earn_leave', 'casual_leave', 'medical_leave', 'other_leave'])) {
-            // this leaves are in user table
-
-            // reducing leaves like earn_leave
-            $query = sprintf("UPDATE users SET %s = %s-%s WHERE users.user_id = %s", $leaveType, $leaveType, $days, $this->userid);
-        } else {
-            // increasing leaves like urgent_leave
-
-            $query = sprintf("UPDATE users SET %s = %s+%s WHERE users.user_id = %s", $leaveType, $leaveType, $days, $this->userid);
-        }
-
-        if ($leaveType == 'earn_leave')
+        
+        // if (in_array($leaveType, ['earn_leave', 'casual_leave', 'medical_leave', 'other_leave'])) {
+            
+            //     // reducing leaves like earn_leave
+            //     $query = sprintf("UPDATE users SET users.%s = users.%s-%s WHERE users.user_id = %s", $leaveType, $leaveType, $days, $this->userid);
+            // } else {
+                //     // increasing leaves like urgent_leave
+                //     $query = sprintf("UPDATE users SET users.%s = users.%s+%s WHERE users.user_id = %s", $leaveType, $leaveType, $days, $this->userid);
+                
+                // }
+                
+        if ($leaveType == 'earn_leave'){
             $this->earn_leave -= $days;
-        else if ($leaveType == 'casual_leave')
+        }
+        else if ($leaveType == 'casual_leave'){
             $this->casual_leave -= $days;
-        else if ($leaveType == 'medical_leave')
+        }
+        else if ($leaveType == 'medical_leave'){
             $this->medical_leave -= $days;
-        else if ($leaveType == 'other_leave')
+        }
+        else if ($leaveType == 'other_leave'){
             $this->other_leave -= $days;
-        else if ($leaveType == 'maternity_leave')
+        }
+        else if ($leaveType == 'maternity_leave'){
             $this->maternity_leave += $days;
-        else if ($leaveType == 'urgent_leave')
+        }
+        else if ($leaveType == 'urgent_leave'){
             $this->urgent_leave += $days;
-
-
+        }
+        else if ($leaveType == 'without_pay_leave'){
+            $this->without_pay_leave += $days;
+        }
+                
+                
+        $query = sprintf("UPDATE users SET %s = %s+%s WHERE users.user_id = %s", $leaveType,$leaveType, $days, $this->userid);
         $conn->query($query);
+        // return $query;
     }
 
 

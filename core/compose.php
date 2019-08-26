@@ -18,10 +18,13 @@ $leaveDate = $_POST['date'];
 $seen = 'no';
 
 
+$designation_leave = $conn->query("SELECT '$leaveType' as days FROM users WHERE user_id='$user->userid'")->fetch_object()->days;
+
 $leaveLeft = $user->getLeave($leaveType);
 
+
 if($days < 1){
-    // error
+    // user fun error
     header("Location: ../compose.php?error=daysError");
     exit(1);
 }

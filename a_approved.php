@@ -12,7 +12,7 @@
                     <section class="panel">
                         <header class="panel-heading wht-bg">
                             <h4 class="gen-case">
-                                Pending applications
+                                Approved applications
 
                             </h4>
                         </header>

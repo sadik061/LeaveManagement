@@ -82,9 +82,14 @@
                             </div>
 
                             <div>
+                                <?php 
+                                $days = $row["days"];
+                                $to_date = strtotime("+$days day", strtotime($row["leave_Date"]));
+                                $to_date = date("Y-m-d", $to_date);
+                                ?>
                                 <h4>I am writing this letter to inform and to get permission for the leaves
-                                    form <?php echo $row["leave_Date"]; ?> for <?php echo $row["days"]; ?>
-                                    days. <?php echo $row["message"]; ?>
+                                    form <?php echo $row["leave_Date"]; ?> to <?php echo $to_date; ?> (for <?php echo $row["days"]; ?>
+                                    days). <?php echo $row["message"]; ?>
 
                                 </h4><br>
                                 <h4>I shall be highly obliged for your act of kindness. </h4><br>

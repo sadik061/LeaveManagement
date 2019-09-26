@@ -1,8 +1,11 @@
 <?php
     $servername = "localhost";
-    $username = "bdpalcon_app";
-    $password = "!J@!HPfdY?@p";
-    $dbname = "bdpalcon_app";
+    $username = "root";
+    $password = "";
+    $dbname = "leavemanagement";
+    // $username = "bdpalcon_app";
+    // $password = "!J@!HPfdY?@p";
+    // $dbname = "bdpalcon_app";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);

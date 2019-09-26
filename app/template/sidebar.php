@@ -45,6 +45,7 @@
                         <?php }
                     } ?>
 
+                    <li><a href="department.php"> <i class="fa fa-envelope-o"></i> Add department</a></li>
                     <li><a href="designation.php"> <i class="fa fa-envelope-o"></i> Add designation</a></li>
                     <li><a href="user.php"> <i class="fa fa-envelope-o"></i> Add colleague</a></li>
                 <?php } else { ?>

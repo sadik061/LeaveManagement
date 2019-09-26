@@ -29,6 +29,7 @@ $users = getContacts();
                                     </td>
                                     <?php if($_SESSION["role"] == "super_admin"){ ?>
                                     <td><a class="btn btn-compose" type="submit" href="showProfile.php?userid=<?php echo $user["user_id"] ?>">Profile</a></td>
+                                    <td><a class="btn btn-compose" href="joblist.php?emp_id=<?php echo $user["user_id"] ?>">Job list</a></td>
                                     <?php } ?>
                                     <td><a class="btn btn-compose" href="composeMsg.php?to=<?php echo $user["user_id"] ?>">Message</a></td>
                                 </tr>

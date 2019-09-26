@@ -90,7 +90,7 @@
                                 </thead>
                                 <tbody>
                                 <?php
-                                $sql = "SELECT * FROM designation";
+                                $sql = "SELECT * FROM designation ORDER BY designation_name";
                                 $result = $conn->query($sql);
                                 if ($result->num_rows > 0) {
                                     // output data of each row

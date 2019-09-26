@@ -24,9 +24,9 @@
 // Start the session
 include 'database.php';
 
-$sql = "INSERT INTO users (user_name, email, password, designation_id, role) VALUES ('%s', '%s', '%s', '%s', '%s')";
+$sql = "INSERT INTO users (user_name, email, password, designation_id,department_id, role) VALUES ('%s','%s', '%s', '%s', '%s', '%s')";
 
-$query = sprintf($sql,$_GET['user_name'], $_GET['email'],$_GET['password'],$_GET['parent_id'],$_GET['role']);
+$query = sprintf($sql,$_GET['user_name'], $_GET['email'],$_GET['password'],$_GET['designation_parent_id'],$_GET['department_parent_id'],$_GET['role']);
 
 $conn->query($query);
 

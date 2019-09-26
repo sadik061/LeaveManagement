@@ -1,5 +1,5 @@
 <?php include 'session.php'; ?>
-<?php if($_SESSION["role"]=="admin" || $_SESSION["role"]=="super_admin"){ ?>
+<?php if($_SESSION["role"]=="department_head" || $_SESSION["role"]=="super_admin"){ ?>
 <?php include 'template/header.php'; ?>
     <section id="main-content">
         <section class="wrapper">
@@ -24,9 +24,27 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label class="col-sm-2 col-sm-2 control-label">Department</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" name="department_parent_id">
+                                            <option value="0">None</option>
+                                            <?php include 'core/database.php';
+                                            $sql = "SELECT * FROM department";
+                                            $result = $conn->query($sql);
+                                            if ($result->num_rows > 0) {
+                                                // output data of each row
+                                                while ($row = $result->fetch_assoc()) {
+
+                                                    echo '<option value="' . $row["department_id"] . '">' . $row["department_name"] . '</option>';
+                                                }
+                                            } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label class="col-sm-2 col-sm-2 control-label">Designation</label>
                                     <div class="col-sm-10">
-                                        <select class="form-control" name="parent_id">
+                                        <select class="form-control" name="designation_parent_id">
                                             <option value="0">None</option>
                                             <?php include 'core/database.php';
                                             $sql = "SELECT * FROM designation";
@@ -60,7 +78,6 @@
                                         <select class="form-control" name="role">
                                             <option value="user">User</option>
                                             <option value="department_head">Department Head</option>
-                                            <option value="admin">Admin</option>
                                             <option value="super_admin">Super Admin</option>
 
                                         </select>

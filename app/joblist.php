@@ -56,11 +56,15 @@
                                         var button_id = $(this).attr("id");   
                                         $('#row'+button_id+'').remove();  
                                     });  
-                                    $('#submit').click(function(){            
+                                    $('#submit').click(function(){
+                                        var emp_id = "<?php echo $emp_id ?>";            
+                                        // console.log($('#add_name').serialize());
                                         $.ajax({  
                                             url:"core/addjobs.php",  
                                             method:"POST",  
-                                            data:$('#add_name').serialize(),  
+                                            data:  {
+                                                name: [$('#add_name').serialize(),emp_id]
+                                            },  
                                             success:function(data)  
                                             {  
                                                 alert(JSON.parse(data)[0]);  

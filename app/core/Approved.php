@@ -15,7 +15,14 @@ $applicant_user = $conn->query("SELECT user_id FROM application WHERE applicatio
 $user = new User($applicant_user);
 
 if ($_SESSION["role"] == "department_head") {
-    $sql = "UPDATE application set department=1 , status='$status' WHERE application_id='$application_id'";
+    if($user->role == 'super_admin'){
+        // if super-admin ask for leave....
+        $sql = "UPDATE application set department=1,admin=1 , status='approved' WHERE application_id='$application_id'";
+        $user->setLeave($leave_type,$leave_days);
+    }
+    else{
+        $sql = "UPDATE application set department=1 , status='$status' WHERE application_id='$application_id'";
+    }
 } else if ($_SESSION["role"] == "super_admin") {
     $user->setLeave($leave_type,$leave_days);
 

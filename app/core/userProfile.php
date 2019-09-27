@@ -121,7 +121,10 @@ class User
             $this->urgent_leave += $days;
         }
         else if ($leaveType == 'without_pay_leave'){
-            $this->without_pay_leave += $days;
+            $this->without_pay_leave = $days;
+            $query = sprintf("UPDATE users SET %s = %s WHERE users.user_id = %s", $leaveType, $days, $this->userid);
+            $conn->query($query);
+            return 0;
         }
                 
                 

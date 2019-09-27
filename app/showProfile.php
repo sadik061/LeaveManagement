@@ -107,13 +107,27 @@ if super-admin want to see someone's profile, system will direct to this file --
                                             <label class="col-sm-3 col-sm-3 control-label"><?php echo $user->getLeave('urgent_leave'); ?> </label>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-3 col-sm-3 control-label">Without Pay Leave Taken:</label>
-                                            <label class="col-sm-3 col-sm-3 control-label"><?php echo $user->getLeave('without_pay_leave'); ?> </label>
-                                        </div>
-                                        <div class="form-group">
                                             <label class="col-sm-3 col-sm-3 control-label">Other Leave Left:</label>
                                             <label class="col-sm-3 col-sm-3 control-label"><?php echo $user->getLeave('other_leave'); ?> </label>
                                         </div>
+                                        <?php if($_SESSION["role"]=="super_admin"){ ?>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 col-sm-3 control-label">Without pay leave taken:</label>
+                                            <label class="col-sm-3 col-sm-3 control-label">
+                                            <form action='core/updateWithOutPayLeave.php' method="POST">
+                                                <input type="number" name="without_pay_leave" id="without_pay_leave" value="<?php echo $user->without_pay_leave; ?>" min=0>
+                                                <input type="text" name="userid" id="userid" value="<?php echo $user->userid; ?>" hidden>
+                                                <br><br>
+                                                <button type="submit">Submit</button>
+                                            </form>
+                                            </label>
+                                        </div>
+                                        <?php } else { ?>
+                                            <div class="form-group">
+                                                <label class="col-sm-3 col-sm-3 control-label">Point:</label>
+                                                <label class="col-sm-3 col-sm-3 control-label"><?php echo $user->point; ?></label>
+                                            </div>
+                                        <?php } ?>
                                         <div class="form-group">
                                             <label class="col-sm-3 col-sm-3 control-label">Email:</label>
                                             <label class="col-sm-3 col-sm-3 control-label"><?php echo $user->email; ?></label>

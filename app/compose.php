@@ -66,14 +66,18 @@ else if($error=='daysError'){ ?>
                             </div>
 
                             <div>
-                                <h4>I am writing this letter to inform and to get permission for the leaves from <input
-                                            type="date" class="form-control"
-                                            style="display: initial;width:15%;" name="date"
-                                            placeholder="date"> for <input type="text" class="form-control"
-                                                                           style="display: initial;width:15%;"
-                                                                           placeholder="3" name="days"> days.<input type="text" class="form-control"
-                                                                              style="display: initial;width: 90%;    margin-top: 7px;"
-                                                                              placeholder="My younger brother is going to be married on the " name="message">
+                                <h4>I am writing this letter to inform and to get permission for the leaves from 
+                                <input type="date" class="form-control" style="display: initial;width:15%;" name="date" placeholder="date"> 
+                                to 
+                                <input type="date" class="form-control" style="display: initial;width:15%;" name="todate" placeholder="date">
+                                 for 
+                                 
+                                 <input type="text" class="form-control" style="display: initial;width:15%;" placeholder="3" name="days" min="1"> 
+                                 
+                                 days.
+                                 
+                                 <input type="text" class="form-control" style="display: initial;width: 90%;    margin-top: 7px;" 
+                                 placeholder="My younger brother is going to be married on the " name="message">
 
                                 </h4><br>
                                 <h4>I shall be highly obliged for your act of kindness.</h4><br>

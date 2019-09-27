@@ -7,11 +7,11 @@
 
     <section class="panel">
         <div class="panel-body">
-            <?php if($user->role != "super_admin"){ ?>
+            <?php //if($user->role != "super_admin"){ ?>
             <a href="compose.php" class="btn btn-compose">
                 <i class="fa fa-pencil"></i> New Application
             </a>
-            <?php } ?>
+            <?php //} ?>
             <ul class="nav nav-pills nav-stacked mail-nav" id="nav">
                 <li><a href="profile.php"> <i class="fa fa-user"></i> Profile</a></li>
 

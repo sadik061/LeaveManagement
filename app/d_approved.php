@@ -53,8 +53,8 @@
 
                                             <tr class="unread" >
 
-                                                <td class="view-message  dont-show" style="width: 30%"><a href="view.php?id=<?php echo $row["application_id"] ?>"> <?php echo $row["subject"] ?></a></td>
-                                                <td class="view-message "><a href="view.php?id=<?php echo $row["application_id"] ?>"> <?php echo $row["message"] ?></a></td>
+                                                <td class="view-message  dont-show" style="width: 30%"><a href="view.php?id=<?php echo $row["application_id"] ?>"> <?php echo ucfirst(str_replace(' ', '_', $row["subject"])); ?></a></td>
+                                                <td class="view-message "><a href="view.php?id=<?php echo $row["application_id"] ?>"> Click to view the application </a></td>
                                                 <td class="view-message  text-right"> <?php echo $row["subday"] ?></td>
                                             </tr >
                                         <?php }} ?>

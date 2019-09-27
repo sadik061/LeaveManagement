@@ -39,7 +39,7 @@
                                         echo $row["designation_name"]; ?></h4>
                                     <h4>Prfessional Associate LTD.</h4>
                                     <h4>Adabor, Dhaka-1207</h4><br>
-                                    <h4>Subject: <?php echo $row["subject"]; ?></h4>
+                                    <h4>Subject: <?php echo ucfirst(str_replace('_', ' ', $row["subject"])); ?></h4>
                                     <br><h4>Dear Sir,</h4><br>
                                 </div>
                                 <?php 

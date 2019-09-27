@@ -37,7 +37,13 @@ if(isset($_POST['delete'])){
                                 <div class="col-md-9">
                                     <h1><?php echo $msgdata['from_username'] ?></h1>
                                     <h2><?php echo $msgdata['datetime'] ?></h2>
-                                    <h3><?php echo $msgdata['msg'] ?></h3>
+                                    <?php 
+                                    $msg = explode ("\r\n", $msgdata['msg']);  
+                                    foreach ($msg as $i) {
+                                        echo "<h3>".$i."</h3><br>";
+                                    }
+
+                                    ?>
                                 </div>
                                     <form class="form-horizontal style-form" action="viewMessage.php" method="POST">
                                         

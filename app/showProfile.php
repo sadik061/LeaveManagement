@@ -70,6 +70,10 @@ if super-admin want to see someone's profile, system will direct to this file --
                                         <?php } ?>
 
                                         <div class="form-group">
+                                            <label class="col-sm-3 col-sm-3 control-label">Department:</label>
+                                            <label class="col-sm-3 col-sm-3 control-label"><?php echo $user->getDepartment(); ?></label>
+                                        </div>
+                                        <div class="form-group">
                                             <label class="col-sm-3 col-sm-3 control-label">Designation:</label>
                                             <label class="col-sm-3 col-sm-3 control-label"><?php echo $user->getDesignation(); ?></label>
                                         </div>

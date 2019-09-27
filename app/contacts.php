@@ -23,6 +23,7 @@ $users = getContacts();
                                     <td style="width: 20%;"><img src="uploads/<?php echo $user["image"] ?>" class="img-circle"></td>
                                     <td>
                                         <p><?php echo $user["user_name"] ?></p>
+                                        <p><?php echo $user["department_name"] ?> Department</p>
                                         <p><?php echo $user["designation_name"] ?></p>
                                         <p><?php echo $user["email"] ?></p>
                                         <p><?php echo $user["phone"] ?></p>

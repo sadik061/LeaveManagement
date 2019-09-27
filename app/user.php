@@ -27,7 +27,6 @@
                                     <label class="col-sm-2 col-sm-2 control-label">Department</label>
                                     <div class="col-sm-10">
                                         <select class="form-control" name="department_parent_id">
-                                            <option value="0">None</option>
                                             <?php include 'core/database.php';
                                             $sql = "SELECT * FROM department";
                                             $result = $conn->query($sql);
@@ -45,7 +44,6 @@
                                     <label class="col-sm-2 col-sm-2 control-label">Designation</label>
                                     <div class="col-sm-10">
                                         <select class="form-control" name="designation_parent_id">
-                                            <option value="0">None</option>
                                             <?php include 'core/database.php';
                                             $sql = "SELECT * FROM designation";
                                             $result = $conn->query($sql);
@@ -104,6 +102,7 @@
                                 <thead>
                                 <tr>
                                     <th> Name</th>
+                                    <th> Department</th>
                                     <th> Designation</th>
                                     <th> Email</th>
                                     <th> Role</th>
@@ -113,22 +112,25 @@
                                 </thead>
                                 <tbody>
                                 <?php
-                                $sql = "SELECT * FROM users";
+                                $sql = "SELECT * FROM users JOIN designation JOIN department ON users.department_id=department.department_id AND users.designation_id=designation.designation_id                                ";
                                 $result = $conn->query($sql);
                                 if ($result->num_rows > 0) {
                                     // output data of each row
                                     while ($row = $result->fetch_assoc()) {
-                                        echo '<tr>
-                                    <td>' . $row["user_name"] . '</td>';
-                                        $sql2 = "SELECT * FROM designation where designation_id=" . $row["designation_id"];
-                                        $result2 = $conn->query($sql2);
-                                        $row2 = $result2->fetch_assoc();
-                                        echo '<td>' . $row2["designation_name"] . '</td>
-                                        <td>' . $row["email"] . '</td>
-                                        <td>' . $row["role"] . '</td>
-                                    <td><a href="core/removeuser.php?id=' . $row["user_id"] . '" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a></td>
-                                    <td><a href="updatecollegueprofile.php?userid=' . $row["user_id"] . '" class="btn btn-warning btn-xs"><i class="fa fa-refresh "></i></a></td>
-                                </tr>';
+                                        if($_SESSION['userid'] != $row["user_id"]){
+                                            echo '<tr>
+                                                <td>' . $row["user_name"] . '</td>
+                                                <td>' . $row["department_name"] . '</td>
+                                                <td>' . $row["designation_name"] . '</td>
+                                                <td>' . $row["user_name"] . '</td>
+                                                <td>' . $row["email"] . '</td>
+                                                <td>' . $row["role"] . '</td>
+                                                <td><a href="core/removeuser.php?id=' . $row["user_id"] . '" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a></td>
+                                                <td><a href="updatecollegueprofile.php?userid=' . $row["user_id"] . '" class="btn btn-warning btn-xs"><i class="fa fa-refresh "></i></a></td>
+                                            </tr>';
+                                            
+                                        }
+
                                     }
                                 }
                                 $conn->close(); ?>

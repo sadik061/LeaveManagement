@@ -14,6 +14,7 @@ class User
     public $point;
     public $email;
     public $password;
+    public $department_id;
     public $designation_id;
     public $loan;
     public $role;
@@ -48,6 +49,7 @@ class User
             $this->email = $row['email'];
             $this->password = $row['password'];
             $this->designation_id = $row['designation_id'];
+            $this->department_id = $row['department_id'];
             $this->loan = $row['loan_taken'];
             $this->role = $row['role'];
             $this->image = $row['image'];
@@ -139,6 +141,17 @@ class User
         $designation = $conn->query($query)->fetch_object()->designation_name;
 
         return $designation;
+    }
+    
+    
+    public function getDepartment()
+    {
+        require('database.php');
+
+        $query = sprintf("SELECT department.department_name FROM users inner join department on users.department_id=department.department_id where user_id=%s", $this->userid);
+        $department = $conn->query($query)->fetch_object()->department_name;
+
+        return $department;
     }
 
     public function getFiles()

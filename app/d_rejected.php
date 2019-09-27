@@ -23,7 +23,8 @@
                                     <tbody>
                                     <?php include 'core/database.php';
 
-                                    include 'core/database.php';
+                                    $dept_admin = new User($_SESSION['userid']);
+
                                     if (isset($_GET['pageno'])) {
                                         $pageno = $_GET['pageno'];
                                     } else {

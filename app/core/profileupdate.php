@@ -44,14 +44,15 @@ if ($_FILES["fileToUpload"]["size"] > 500000) {
     $uploadOk = 0;
 }
 // Allow certain file formats
-if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-    && $imageFileType != "gif") {
+if($imageFileType != ""){
+    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
         $msg = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
         echo "<script type='text/javascript'>
                 alert('$msg');
                 window.location.href = '../profile.php';
                 </script>";
         $uploadOk = 0;
+    }
 }
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
@@ -76,6 +77,6 @@ if ($uploadOk == 0) {
 include 'database.php';
 mysqli_query($conn, $query);
 mysqli_close($conn);
-// header("Location: ../profile.php");
+header("Location: ../profile.php");
 exit();
 ?>

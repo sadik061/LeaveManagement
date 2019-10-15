@@ -83,7 +83,7 @@
 
                             <div>
                                 <?php 
-                                $days = $row["days"];
+                                $days = $row["days"]-1;
                                 $to_date = strtotime("+$days day", strtotime($row["leave_Date"]));
                                 $to_date = date("Y-m-d", $to_date);
                                 ?>

@@ -19,16 +19,34 @@
                 <!-- Super admin -->
                 <?php if ($user->role == "super_admin") 
                 { ?>
-                    <li><a href="a_pending.php"> <i class="fa fa-inbox"></i> pending
+                    <li><a href="a_pending.php"> <i class="fa fa-inbox"></i>Employee pending
                     application <?php include 'core/database.php';
                     $sql = "SELECT count(seen) as sum FROM application where status='pending' and admin=0 and department=1";
                     $result = $conn->query($sql);
                     if ($result->num_rows > 0){
                         // output data of each row
                         while ($row = $result->fetch_assoc()){?>
-                            <span class="label label-theme pull-right inbox-notification"><?php if($row["sum"]>0){echo $row["sum"];} ?></span></a></li>
+                            <span class="label label-theme pull-right inbox-notification"><?php if($row["sum"]>0){echo $row["sum"];} ?></span>
                         <?php }
                     } ?>
+                    </a></li>
+                    
+                    
+                    <li><a href="sadmin_pending.php"> <i class="fa fa-inbox"></i>My pending
+                    application <?php include 'core/database.php';
+                    $sql = "SELECT count(seen) as sum FROM application where status='pending' and admin=0 and department=0 and user_id=1";
+                    $result = $conn->query($sql);
+                    if ($result->num_rows > 0){
+                        // output data of each row
+                        while ($row = $result->fetch_assoc()){?>
+                            <span class="label label-theme pull-right inbox-notification"><?php if($row["sum"]>0){echo $row["sum"];} ?></span>
+                        <?php }
+                    } ?>
+                    </a></li>
+                    
+                    
+
+
                     <li><a href="a_approved.php"> <i class="fa fa-check"></i> Approved
                     application <?php include 'core/database.php';
                     $sql = "SELECT count(seen) as sum FROM application where status='approved' and admin=1";

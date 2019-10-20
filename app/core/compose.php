@@ -10,6 +10,7 @@ $user = new User($_SESSION["userid"]);
 
 $leaveType = $_POST['leave_type'];
 $days_needed = $_POST['days'];
+$hours = $_POST['hours'];
 $subject = $_POST['leave_type'];
 $msg = $_POST['message'];
 $status = "pending";
@@ -39,8 +40,9 @@ if(in_array($leaveType, ['earn_leave','casual_leave','medical_leave','other_leav
     }
 }
 
-$query = sprintf("INSERT INTO application (user_id, subject, message, status,subday, days, leave_Date, seen, department, admin) 
-                    VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",$user->userid,$subject,$msg,$status,date("Y-m-d"),$days,$leaveDate,$seen,0,0);
+
+$query = sprintf("INSERT INTO application (user_id, subject, message, status,subday, days, hours, leave_Date, seen, department, admin) 
+                    VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s','%s', '%s', '%s', '%s')",$user->userid,$subject,$msg,$status,date("Y-m-d"),$days,$hours,$leaveDate,$seen,0,0);
 
 $conn->query($query);
 // echo $query;

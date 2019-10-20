@@ -30,7 +30,7 @@
                                     }
                                     $no_of_records_per_page = 10;
                                     $offset = ($pageno - 1) * $no_of_records_per_page;
-                                    $total_pages_sql = "SELECT COUNT(*) FROM application where status='pending' and admin=0 and department=0 and user_id=1";
+                                    $total_pages_sql = "SELECT COUNT(*) FROM application where status='pending' and admin=0 and department=1 and user_id=1";
 
 
 
@@ -38,7 +38,7 @@
                                     $total_rows = mysqli_fetch_array($result)[0];
                                     $total_pages = ceil($total_rows / $no_of_records_per_page);
 
-                                    $sql = "SELECT * FROM application where status='pending' and admin=0 and department=0 and user_id=1 LIMIT ".$offset.", ".$no_of_records_per_page;
+                                    $sql = "SELECT * FROM application where status='pending' and admin=0 and department=1 and user_id=1 LIMIT ".$offset.", ".$no_of_records_per_page;
 
 
 

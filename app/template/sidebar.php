@@ -34,7 +34,7 @@
                     
                     <li><a href="sadmin_pending.php"> <i class="fa fa-inbox"></i>My pending
                     application <?php include 'core/database.php';
-                    $sql = "SELECT count(seen) as sum FROM application where status='pending' and admin=0 and department=0 and user_id=1";
+                    $sql = "SELECT count(seen) as sum FROM application where status='pending' and admin=0 and department=1 and user_id=1";
                     $result = $conn->query($sql);
                     if ($result->num_rows > 0){
                         // output data of each row

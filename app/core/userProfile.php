@@ -28,6 +28,7 @@ class User
     public $casual_leave;
     public $medical_leave;
     public $without_pay_leave;
+    public $half_day_leave;
     public $other_leave;
     public $earn_leave_year;
 
@@ -65,6 +66,12 @@ class User
             $this->other_leave = $row['other_leave'];
             $this->earn_leave_year = $row['earn_leave_year'];
         }
+
+        // getting remaining half leave
+        $query = sprintf("SELECT COUNT(*) AS days FROM application WHERE user_id='%s' AND subject='%s' AND department=1 AND admin=1 AND leave_Date LIKE ",$this->userid,'halfday_leave');
+        $query = $query."CONCAT('%', (SELECT MONTH(CURDATE())) ,'%')";
+        $this->half_day_leave = $conn->query($query)->fetch_object()->days;
+
     }
 
     public function getLeave($leaveType)
@@ -75,6 +82,12 @@ class User
             // this leaves are in user table
             $query = sprintf("SELECT %s as days FROM users WHERE user_id=%s", $leaveType, $this->userid);
         } else {
+
+            if($leaveType=="halfday_leave"){
+                // return remaining half leave
+                return $this->half_day_leave;
+            }
+            
             // this leaves are in designation table
 
             // getting designationGivenOffdays - usertakenoffdays

@@ -122,7 +122,6 @@
                                                 <td>' . $row["user_name"] . '</td>
                                                 <td>' . $row["department_name"] . '</td>
                                                 <td>' . $row["designation_name"] . '</td>
-                                                <td>' . $row["user_name"] . '</td>
                                                 <td>' . $row["email"] . '</td>
                                                 <td>' . $row["role"] . '</td>
                                                 <td><a href="core/removeuser.php?id=' . $row["user_id"] . '" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a></td>

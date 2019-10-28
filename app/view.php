@@ -33,7 +33,7 @@
                                         $mon = array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
                                         $Day = date('d');
 
-                                        echo $mon[$Month] . " " . $Day . ", " . $Year; ?> </h4>
+                                        echo $mon[$Month-1] . " " . $Day . ", " . $Year; ?> </h4>
                                     <h4> Authority</h4>
                                     <h4> <?php
                                         echo $row["designation_name"]; ?></h4>

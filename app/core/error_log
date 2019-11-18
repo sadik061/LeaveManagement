@@ -109,3 +109,90 @@
 [22-Sep-2019 07:28:14 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/profileupdate.php:38) in /home/bdpalcon/public_html/app/core/profileupdate.php on line 64
 [22-Sep-2019 07:29:49 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/profileupdate.php:38) in /home/bdpalcon/public_html/app/core/profileupdate.php on line 64
 [22-Sep-2019 07:30:58 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/profileupdate.php:38) in /home/bdpalcon/public_html/app/core/profileupdate.php on line 64
+[06-Oct-2019 09:49:29 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/updateuser.php:34) in /home/bdpalcon/public_html/app/core/updateuser.php on line 55
+[06-Oct-2019 09:49:44 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/updateuser.php:34) in /home/bdpalcon/public_html/app/core/updateuser.php on line 55
+[08-Oct-2019 10:39:47 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/updateuser.php:34) in /home/bdpalcon/public_html/app/core/updateuser.php on line 55
+[08-Oct-2019 10:42:41 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/updateuser.php:34) in /home/bdpalcon/public_html/app/core/updateuser.php on line 55
+[08-Oct-2019 10:43:37 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/updateuser.php:34) in /home/bdpalcon/public_html/app/core/updateuser.php on line 55
+[08-Oct-2019 10:44:05 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/updateuser.php:34) in /home/bdpalcon/public_html/app/core/updateuser.php on line 55
+[08-Oct-2019 10:47:15 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/updateuser.php:34) in /home/bdpalcon/public_html/app/core/updateuser.php on line 55
+[08-Oct-2019 10:51:16 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/updateuser.php:34) in /home/bdpalcon/public_html/app/core/updateuser.php on line 55
+[08-Oct-2019 10:52:23 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/updateuser.php:34) in /home/bdpalcon/public_html/app/core/updateuser.php on line 55
+[08-Oct-2019 10:53:11 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/updateuser.php:34) in /home/bdpalcon/public_html/app/core/updateuser.php on line 55
+[08-Oct-2019 10:53:49 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/updateuser.php:34) in /home/bdpalcon/public_html/app/core/updateuser.php on line 55
+[08-Oct-2019 10:54:04 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/updateuser.php:34) in /home/bdpalcon/public_html/app/core/updateuser.php on line 55
+[08-Oct-2019 10:54:41 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/updateuser.php:34) in /home/bdpalcon/public_html/app/core/updateuser.php on line 55
+[08-Oct-2019 10:54:53 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/updateuser.php:34) in /home/bdpalcon/public_html/app/core/updateuser.php on line 55
+[08-Oct-2019 10:55:12 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/updateuser.php:34) in /home/bdpalcon/public_html/app/core/updateuser.php on line 55
+[08-Oct-2019 10:55:31 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/updateuser.php:34) in /home/bdpalcon/public_html/app/core/updateuser.php on line 55
+[08-Oct-2019 10:56:05 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/updateuser.php:34) in /home/bdpalcon/public_html/app/core/updateuser.php on line 55
+[08-Oct-2019 10:56:21 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/updateuser.php:34) in /home/bdpalcon/public_html/app/core/updateuser.php on line 55
+[08-Oct-2019 10:56:54 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/updateuser.php:34) in /home/bdpalcon/public_html/app/core/updateuser.php on line 55
+[08-Oct-2019 10:57:29 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/updateuser.php:34) in /home/bdpalcon/public_html/app/core/updateuser.php on line 55
+[08-Oct-2019 10:57:52 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/updateuser.php:34) in /home/bdpalcon/public_html/app/core/updateuser.php on line 55
+[08-Oct-2019 10:58:12 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/updateuser.php:34) in /home/bdpalcon/public_html/app/core/updateuser.php on line 55
+[08-Oct-2019 10:58:41 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/updateuser.php:34) in /home/bdpalcon/public_html/app/core/updateuser.php on line 55
+[08-Oct-2019 10:58:58 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/updateuser.php:34) in /home/bdpalcon/public_html/app/core/updateuser.php on line 55
+[08-Oct-2019 10:59:33 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/updateuser.php:34) in /home/bdpalcon/public_html/app/core/updateuser.php on line 55
+[08-Oct-2019 10:59:50 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/updateuser.php:34) in /home/bdpalcon/public_html/app/core/updateuser.php on line 55
+[15-Oct-2019 06:00:06 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/updateuser.php:34) in /home/bdpalcon/public_html/app/core/updateuser.php on line 55
+[15-Oct-2019 06:00:37 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/updateuser.php:34) in /home/bdpalcon/public_html/app/core/updateuser.php on line 55
+[15-Oct-2019 07:16:27 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/updateuser.php:34) in /home/bdpalcon/public_html/app/core/updateuser.php on line 55
+[15-Oct-2019 07:23:34 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/updateuser.php:34) in /home/bdpalcon/public_html/app/core/updateuser.php on line 55
+[15-Oct-2019 07:24:32 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/updateuser.php:34) in /home/bdpalcon/public_html/app/core/updateuser.php on line 55
+[15-Oct-2019 07:26:13 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/updateuser.php:34) in /home/bdpalcon/public_html/app/core/updateuser.php on line 55
+[15-Oct-2019 08:22:35 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_assoc() on boolean in /home/bdpalcon/public_html/app/core/userProfile.php:43
+Stack trace:
+#0 /home/bdpalcon/public_html/app/core/compose.php(9): User->__construct(NULL)
+#1 {main}
+  thrown in /home/bdpalcon/public_html/app/core/userProfile.php on line 43
+[16-Oct-2019 09:18:10 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_object() on boolean in /home/bdpalcon/public_html/app/core/userProfile.php:85
+Stack trace:
+#0 /home/bdpalcon/public_html/app/core/compose.php(23): User->getLeave('medical_leave')
+#1 {main}
+  thrown in /home/bdpalcon/public_html/app/core/userProfile.php on line 85
+[16-Oct-2019 09:18:25 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_object() on boolean in /home/bdpalcon/public_html/app/core/userProfile.php:85
+Stack trace:
+#0 /home/bdpalcon/public_html/app/core/compose.php(23): User->getLeave('medical_leave')
+#1 {main}
+  thrown in /home/bdpalcon/public_html/app/core/userProfile.php on line 85
+[16-Oct-2019 09:18:34 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_object() on boolean in /home/bdpalcon/public_html/app/core/userProfile.php:85
+Stack trace:
+#0 /home/bdpalcon/public_html/app/core/compose.php(23): User->getLeave('medical_leave')
+#1 {main}
+  thrown in /home/bdpalcon/public_html/app/core/userProfile.php on line 85
+[16-Oct-2019 09:18:52 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_object() on boolean in /home/bdpalcon/public_html/app/core/userProfile.php:85
+Stack trace:
+#0 /home/bdpalcon/public_html/app/core/compose.php(23): User->getLeave('medical_leave')
+#1 {main}
+  thrown in /home/bdpalcon/public_html/app/core/userProfile.php on line 85
+[16-Oct-2019 10:08:46 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/updateuser.php:34) in /home/bdpalcon/public_html/app/core/updateuser.php on line 57
+[16-Oct-2019 10:50:59 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/profileupdate.php:41) in /home/bdpalcon/public_html/app/core/profileupdate.php on line 80
+[20-Oct-2019 05:24:58 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/profileupdate.php:41) in /home/bdpalcon/public_html/app/core/profileupdate.php on line 80
+[20-Oct-2019 06:18:02 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/profileupdate.php:41) in /home/bdpalcon/public_html/app/core/profileupdate.php on line 80
+[20-Oct-2019 10:54:28 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/profileupdate.php:51) in /home/bdpalcon/public_html/app/core/profileupdate.php on line 80
+[20-Oct-2019 16:03:35 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_assoc() on boolean in /home/bdpalcon/public_html/app/core/userProfile.php:44
+Stack trace:
+#0 /home/bdpalcon/public_html/app/core/updateWithOutPayLeave.php(9): User->__construct(NULL)
+#1 {main}
+  thrown in /home/bdpalcon/public_html/app/core/userProfile.php on line 44
+[21-Oct-2019 11:12:40 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/updateuser.php:34) in /home/bdpalcon/public_html/app/core/updateuser.php on line 57
+[22-Oct-2019 06:09:35 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_assoc() on boolean in /home/bdpalcon/public_html/app/core/userProfile.php:44
+Stack trace:
+#0 /home/bdpalcon/public_html/app/core/compose.php(9): User->__construct(NULL)
+#1 {main}
+  thrown in /home/bdpalcon/public_html/app/core/userProfile.php on line 44
+[22-Oct-2019 06:09:55 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_assoc() on boolean in /home/bdpalcon/public_html/app/core/userProfile.php:44
+Stack trace:
+#0 /home/bdpalcon/public_html/app/core/compose.php(9): User->__construct(NULL)
+#1 {main}
+  thrown in /home/bdpalcon/public_html/app/core/userProfile.php on line 44
+[28-Oct-2019 10:52:50 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/profileupdate.php:41) in /home/bdpalcon/public_html/app/core/profileupdate.php on line 80
+[29-Oct-2019 12:00:50 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_assoc() on boolean in /home/bdpalcon/public_html/app/core/userProfile.php:44
+Stack trace:
+#0 /home/bdpalcon/public_html/app/core/compose.php(9): User->__construct(NULL)
+#1 {main}
+  thrown in /home/bdpalcon/public_html/app/core/userProfile.php on line 44
+[04-Nov-2019 09:42:09 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/profileupdate.php:41) in /home/bdpalcon/public_html/app/core/profileupdate.php on line 80
+[04-Nov-2019 10:03:56 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/profileupdate.php:41) in /home/bdpalcon/public_html/app/core/profileupdate.php on line 80
+[16-Nov-2019 10:43:48 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/bdpalcon/public_html/app/core/updateuser.php:34) in /home/bdpalcon/public_html/app/core/updateuser.php on line 57

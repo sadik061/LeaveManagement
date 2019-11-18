@@ -28,10 +28,10 @@
                                 <div class="col-md-9">
                                     <h4>
                                         <?php
-                                        $Year = date('Y');
-                                        $Month = (int)date('m');
+                                        $Year = explode("-",$row["subday"])[0];
+                                        $Month = explode("-",$row["subday"])[1];
                                         $mon = array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
-                                        $Day = date('d');
+                                        $Day = explode("-",$row["subday"])[2];
 
                                         echo $mon[$Month-1] . " " . $Day . ", " . $Year; ?> </h4>
                                     <h4> Authority</h4>

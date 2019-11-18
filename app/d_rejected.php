@@ -42,7 +42,7 @@
                                     $total_rows = mysqli_fetch_array($result)[0];
                                     $total_pages = ceil($total_rows / $no_of_records_per_page);
 
-                                    $sql = "SELECT * FROM application natural join users where status='rejected' and department=1 and users.department_id='%s' LIMIT ".$offset.", ".$no_of_records_per_page;
+                                    $sql = "SELECT * FROM application natural join users where status='rejected' and department=1 and users.department_id='%s' ORDER BY subday DESC LIMIT ".$offset.", ".$no_of_records_per_page;
                                     $sql = sprintf($sql,$dept_admin->department_id);
 
 
@@ -55,6 +55,7 @@
                                             <tr class="unread" >
 
                                                 <td class="view-message  dont-show" style="width: 30%"><a href="view.php?id=<?php echo $row["application_id"] ?>"> <?php echo ucfirst(str_replace('_', ' ', $row["subject"])); ?></a></td>
+                                                <td class="view-message "><a href="view.php?id=<?php echo $row["application_id"] ?>"> <?php echo $row["user_name"] ?></a></td>
                                                 <td class="view-message "><a href="view.php?id=<?php echo $row["application_id"] ?>"> Click to view the application</a></td>
                                                 <td class="view-message  text-right"> <?php echo $row["subday"] ?></td>
                                             </tr >

@@ -68,26 +68,25 @@ class User
         }
 
         // getting remaining half leave
-        $query = sprintf("SELECT COUNT(*) AS days FROM application WHERE user_id='%s' AND subject='%s' AND department=1 AND admin=1 AND leave_Date LIKE ",$this->userid,'halfday_leave');
-        $query = $query."CONCAT('%', (SELECT MONTH(CURDATE())) ,'%')";
+        $query = sprintf("SELECT COUNT(*) AS days FROM application WHERE user_id='%s' AND subject='%s' AND department=1 AND admin=1 AND leave_Date LIKE ", $this->userid, 'halfday_leave');
+        $query = $query . "CONCAT('%', (SELECT MONTH(CURDATE())) ,'%')";
         $this->half_day_leave = $conn->query($query)->fetch_object()->days;
-
     }
 
     public function getLeave($leaveType)
     {
         require('database.php');
 
-        if (in_array($leaveType, ['earn_leave', 'maternity_leave', 'urgent_leave','without_pay_leave'])) {
+        if (in_array($leaveType, ['earn_leave', 'maternity_leave', 'urgent_leave', 'without_pay_leave'])) {
             // this leaves are in user table
             $query = sprintf("SELECT %s as days FROM users WHERE user_id=%s", $leaveType, $this->userid);
         } else {
 
-            if($leaveType=="halfday_leave"){
+            if ($leaveType == "halfday_leave") {
                 // return remaining half leave
                 return $this->half_day_leave;
             }
-            
+
             // this leaves are in designation table
 
             // getting designationGivenOffdays - usertakenoffdays
@@ -101,52 +100,78 @@ class User
         return $leave;
     }
 
+    public function getTotalSpentLeave($leaveType)
+    {
+    }
+
     public function setLeave($leaveType, $days)
     {
         require('database.php');
-        
+
         // if (in_array($leaveType, ['earn_leave', 'casual_leave', 'medical_leave', 'other_leave'])) {
-            
-            //     // reducing leaves like earn_leave
-            //     $query = sprintf("UPDATE users SET users.%s = users.%s-%s WHERE users.user_id = %s", $leaveType, $leaveType, $days, $this->userid);
-            // } else {
-                //     // increasing leaves like urgent_leave
-                //     $query = sprintf("UPDATE users SET users.%s = users.%s+%s WHERE users.user_id = %s", $leaveType, $leaveType, $days, $this->userid);
-                
-                // }
-                
-        if ($leaveType == 'earn_leave'){
+
+        //     // reducing leaves like earn_leave
+        //     $query = sprintf("UPDATE users SET users.%s = users.%s-%s WHERE users.user_id = %s", $leaveType, $leaveType, $days, $this->userid);
+        // } else {
+        //     // increasing leaves like urgent_leave
+        //     $query = sprintf("UPDATE users SET users.%s = users.%s+%s WHERE users.user_id = %s", $leaveType, $leaveType, $days, $this->userid);
+
+        // }
+
+        if ($leaveType == 'earn_leave') {
             $this->earn_leave -= $days;
-        }
-        else if ($leaveType == 'casual_leave'){
+        } else if ($leaveType == 'casual_leave') {
             $this->casual_leave -= $days;
-        }
-        else if ($leaveType == 'medical_leave'){
+        } else if ($leaveType == 'medical_leave') {
             $this->medical_leave -= $days;
-        }
-        else if ($leaveType == 'other_leave'){
+        } else if ($leaveType == 'other_leave') {
             $this->other_leave -= $days;
-        }
-        else if ($leaveType == 'maternity_leave'){
+        } else if ($leaveType == 'maternity_leave') {
             $this->maternity_leave += $days;
-        }
-        else if ($leaveType == 'urgent_leave'){
+        } else if ($leaveType == 'urgent_leave') {
             $this->urgent_leave += $days;
-        }
-        else if ($leaveType == 'without_pay_leave'){
+        } else if ($leaveType == 'without_pay_leave') {
             $this->without_pay_leave = $days;
             $query = sprintf("UPDATE users SET %s = %s WHERE users.user_id = %s", $leaveType, $days, $this->userid);
             $conn->query($query);
             return 0;
         }
-                
-                
-        $query = sprintf("UPDATE users SET %s = %s+%s WHERE users.user_id = %s", $leaveType,$leaveType, $days, $this->userid);
+
+
+        $query = sprintf("UPDATE users SET %s = %s+%s WHERE users.user_id = %s", $leaveType, $leaveType, $days, $this->userid);
         $conn->query($query);
         // return $query;
     }
 
+    public static function resetLeaves()
+    {
+        require('database.php');
 
+        $query = "UPDATE users SET maternity_leave='0',urgent_leave='0',casual_leave='0',medical_leave='0',other_leave='0'";
+        $conn->query($query);
+        
+        $query = "DELETE FROM application";
+        $conn->query($query);
+    }
+
+    public static function getAllUsers()
+    {
+        require('databasePDO.php');
+
+        $query = "SELECT user_id FROM users";
+
+        $stmt = $conn->prepare($query);
+        $stmt->execute();
+
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $arr = [];
+
+        foreach ($result as $i) {
+            array_push($arr, new User($i["user_id"]));
+        }
+
+        return $arr;
+    }
 
 
     public function getDesignation()
@@ -158,8 +183,8 @@ class User
 
         return $designation;
     }
-    
-    
+
+
     public function getDepartment()
     {
         require('database.php');

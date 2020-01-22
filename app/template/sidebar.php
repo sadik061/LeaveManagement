@@ -162,6 +162,11 @@
                 ?></span></a></li>
                 <li><a href="contacts.php"> <i class="fa fa-address-book"></i>Contacts
                 </a></li>
+                
+                <?php if ($user->role == "super_admin") { ?>
+                    <li><a href="report.php"> <i class="fa fa-download"></i>Annual Report
+                    </a></li>
+                <?php  } ?>
             </ul>
         </div>
     </section>

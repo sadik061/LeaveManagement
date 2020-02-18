@@ -65,7 +65,7 @@ if ($error == 'remainingError') { ?>
                                 </div>
                                 <div class="col-md-4">
                                     <div id="changeable1" class="compose-btn pull-right">
-                                        <button type="submit" class="btn btn-sm btn-theme"><i class="fa fa-reply"></i> Apply</button>
+                                        <button onclick="this.disabled=true;  this.form.submit();" type="submit" class="btn btn-sm btn-theme"><i class="fa fa-reply"></i> Apply</button>
                                     </div>
                                 </div>
                         </div>
